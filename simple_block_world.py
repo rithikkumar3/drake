@@ -89,6 +89,35 @@ def add_sphere(plant: MultibodyPlant, name: str = "sphere", color: np.array = [1
     return sphere_idx
 
 
+def add_cube(plant: MultibodyPlant, name: str = "cube", color: np.array = [0.0, 0.0, 1.0, 0.5], edge_length=0.1, mass=0.1):
+    # Add a cube with compliant hydroelastic contact
+    cube_idx = plant.AddModelInstance(name)
+
+    # Calculate inertia for cube (uniform density assumed)
+    I = SpatialInertia(mass=mass, p_PScm_E=np.zeros(3), G_SP_E=UnitInertia.SolidBox(edge_length, edge_length, edge_length))
+
+    # Add the rigid body for cube
+    cube = plant.AddRigidBody(name, cube_idx, I)
+
+    # The pose of the cube
+    X_cube = RigidTransform()
+
+    # Friction coefficients (modify as needed)
+    friction = CoulombFriction(0.7, 0.6)
+    
+    # Proximity properties (modify as needed)
+    props = get_proximity_properties()
+
+    # Register collision geometry
+    plant.RegisterCollisionGeometry(cube, X_cube, Box(edge_length, edge_length, edge_length),
+                                    name + "_collision", props)
+
+    # Register visual geometry
+    plant.RegisterVisualGeometry(
+        cube, X_cube, Box(edge_length, edge_length, edge_length), name + "_visual", color)
+
+    return cube_idx
+
 def add_box(plant: MultibodyPlant):
     # Add boxes
     masses = [1.]

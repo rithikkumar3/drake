@@ -14,10 +14,10 @@ plant, scene_graph = AddMultibodyPlantSceneGraph(builder, dt)
 
 add_ground(plant)
 color = np.array([0.0, 0.0, 1.0, 0.3])
-sphere_name = "sphere1"
-radius = 0.1
+cube_name = "sphere1"
+edge_length = 0.1
 mass = 1.0
-add_sphere(plant, sphere_name, color, radius, mass)
+add_cube(plant, cube_name, color, edge_length, mass)
 
 plant.mutable_gravity_field().set_gravity_vector(np.zeros(3))
 
@@ -55,12 +55,12 @@ all_contact_pairs = inspector.GetCollisionCandidates()
 # ======================
 
 # Set the initial state
-q0_sphere1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
+q0_cube1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
 v0 = np.zeros(plant.num_velocities())
-x0 = np.hstack((q0_sphere1, v0))   # horizontal stacking one after the other 
+x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other 
 
 # desired final state
-qf_sphere1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
+qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
 
 diagram_context.SetDiscreteState(x0)
 diagram.ForcedPublish(diagram_context)
@@ -113,12 +113,12 @@ cnstr_x0.set_description("initial sphere/box state")
 
 # Final
 cnstr_vf = prog.AddBoundingBoxConstraint(
-    qf_sphere1, qf_sphere1, x[0:7, N]).evaluator()
+    qf_cube1, qf_cube1, x[0:7, N]).evaluator()
 cnstr_vf.set_description("final sphere pose")
 
-xx1_idx = q0_sphere1.size-3
-xy1_idx = q0_sphere1.size-2
-xz1_idx = q0_sphere1.size-1
+xx1_idx = q0_cube1.size-3
+xy1_idx = q0_cube1.size-2
+xz1_idx = q0_cube1.size-1
 print("xx1_idx: ", xx1_idx)
 
 vx1_idx = nq + nv-9
@@ -151,7 +151,7 @@ def eval_vel_constraints(z):
     v_next = z[n+nq:2*n]
 
     pos_inc = v_curr[3:6]*dt
-    ori_inc = v_curr[0:3]*dt*radius
+    ori_inc = v_curr[0:3]*dt*edge_length
     pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
 
     return np.hstack((pos1))
