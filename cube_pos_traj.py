@@ -14,7 +14,7 @@ plant, scene_graph = AddMultibodyPlantSceneGraph(builder, dt)
 
 add_ground(plant)
 color = np.array([0.0, 0.0, 1.0, 0.3])
-cube_name = "sphere1"
+cube_name = "cube1"
 edge_length = 0.1
 mass = 1.0
 add_cube(plant, cube_name, color, edge_length, mass)
