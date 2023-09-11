@@ -102,10 +102,10 @@ def add_cube(plant: MultibodyPlant, name: str = "cube", color: np.array = [0.0, 
     # The pose of the cube
     X_cube = RigidTransform()
 
-    # Friction coefficients (modify as needed)
+    # Friction coefficients 
     friction = CoulombFriction(0.7, 0.6)
     
-    # Proximity properties (modify as needed)
+    # Proximity properties 
     props = get_proximity_properties()
 
     # Register collision geometry
