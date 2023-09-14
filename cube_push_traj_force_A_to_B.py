@@ -14,10 +14,10 @@ plant, scene_graph = AddMultibodyPlantSceneGraph(builder, dt)
 
 add_ground(plant)
 color = np.array([0.0, 0.0, 1.0, 0.3])
-sphere_name = "sphere1"
-radius = 0.1
+cube_name = "cube1"
+edge_length = 0.1
 mass = 1.0
-add_sphere(plant, sphere_name, color, radius, mass)
+add_cube(plant, cube_name, color, edge_length, mass)
 
 plant.mutable_gravity_field().set_gravity_vector(np.zeros(3))
 
@@ -55,19 +55,19 @@ all_contact_pairs = inspector.GetCollisionCandidates()
 # ======================
 
 # Set the initial state
-q0_sphere1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
+q0_cube1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
 v0 = np.zeros(plant.num_velocities())
-x0 = np.hstack((q0_sphere1, v0))   # horizontal stacking one after the other 
+x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other 
 
 # desired final state
-qf_sphere1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
+qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
 
 diagram_context.SetDiscreteState(x0)
 diagram.ForcedPublish(diagram_context)
 
 simulator = Simulator(diagram, diagram_context)
 simulator.set_publish_every_time_step(False)
-simulator.set_target_realtime_rate(1.0)
+simulator.set_target_realtime_rate(0.1)
 simulator.Initialize()
 simulator.AdvanceTo(0.001)
 
@@ -106,24 +106,19 @@ for i in range(N):
     u[:, i] = prog.NewContinuousVariables(m, 'u' + str(i))
 x[:, N] = prog.NewContinuousVariables(n, 'x' + str(N))
 
-# for i in range(N):
-#     print(x[i])
-
 
 # Initial state
 cnstr_x0 = prog.AddBoundingBoxConstraint(x0, x0, x[:, 0]).evaluator()
-print(x0)
-print(x[:,0])
 cnstr_x0.set_description("initial sphere/box state")
 
 # Final
 cnstr_vf = prog.AddBoundingBoxConstraint(
-    qf_sphere1, qf_sphere1, x[0:7, N]).evaluator()
+    qf_cube1, qf_cube1, x[0:7, N]).evaluator()
 cnstr_vf.set_description("final sphere pose")
 
-xx1_idx = q0_sphere1.size-3
-xy1_idx = q0_sphere1.size-2
-xz1_idx = q0_sphere1.size-1
+xx1_idx = q0_cube1.size-3
+xy1_idx = q0_cube1.size-2
+xz1_idx = q0_cube1.size-1
 print("xx1_idx: ", xx1_idx)
 
 vx1_idx = nq + nv-9
@@ -156,7 +151,7 @@ def eval_vel_constraints(z):
     v_next = z[n+nq:2*n]
 
     pos_inc = v_curr[3:6]*dt
-    ori_inc = v_curr[0:3]*dt*radius
+    ori_inc = v_curr[0:3]*dt*edge_length
     pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
 
     return np.hstack((pos1))
@@ -222,6 +217,52 @@ for c in infeasible_constraints:
 # Get and print the solution
 x_sol = result.GetSolution(x)
 u_sol = result.GetSolution(u)
+
+accelerations = np.zeros((nv, N))  # Number of velocities by number of time steps
+forces = np.zeros((nv, N))  # Number of velocities by number of time steps
+
+# Loop through each timestep to calculate acceleration and forces
+for i in range(N):  # Up to N-1 as we take differences
+    v_current = x_sol[nq:, i]
+    v_next = x_sol[nq:, i+1]
+    
+    # Calculate acceleration at this time step
+    a_timestep = (v_next - v_current) / dt
+    
+    # Store the calculated acceleration
+    accelerations[:, i] = a_timestep
+    
+    # Calculate force required at this time step
+    F_timestep = mass * a_timestep  # we have the mass as 1.0
+    
+    # Store the calculated forces
+    forces[:, i] = F_timestep
+
+print("Forces at each time step:")
+print(forces)
+
+total_force = np.sum(forces, axis=1)  # Sum along time steps
+print("Total force:")
+print(total_force)
+
+# maximum force
+max_force = np.max(np.abs(forces), axis=1)
+print(max_force)
+
+#avg force(absolute)
+abs_force = np.mean(np.abs(forces), axis=1)
+print(abs_force)
+
+intg_force = np.sum(np.abs(forces), axis=1)*dt
+print(intg_force)
+
+
+force_magnitude_at_each_step = np.linalg.norm(forces, axis=0) #euclidean norm 
+
+# Integrate this magnitude over time 
+total_effort = np.sum(force_magnitude_at_each_step) * dt
+
+print(f"Total singular effort: {total_effort}")
 
 # ======================
 # SIMULATE
