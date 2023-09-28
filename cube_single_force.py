@@ -2,13 +2,13 @@ import numpy as np
 from pydrake.all import *
 import time
 from simple_block_world import *
-#from quat_operations import *
+# from quat_operations import *
 
 # ======================
 # WORLD
 # ======================
 
-dt = 0.001
+dt = 0.01
 builder = DiagramBuilder()
 plant, scene_graph = AddMultibodyPlantSceneGraph(builder, dt)
 
@@ -57,10 +57,11 @@ all_contact_pairs = inspector.GetCollisionCandidates()
 # Set the initial state
 q0_cube1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
 v0 = np.zeros(plant.num_velocities())
-x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other 
+x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other
 
 # desired final state
-qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
+qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.0, 0.05])
+xf = np.hstack((qf_cube1, v0))
 
 diagram_context.SetDiscreteState(x0)
 diagram.ForcedPublish(diagram_context)
@@ -92,10 +93,10 @@ w_relax = 1e3
 w_effort = 1.0
 
 # control limits [N]
-tau_max = 1.0
+tau_max = 50.0
 
-max_force=np.array([1,1,1])
-min_force=np.array([-1,-1,-1])
+max_force = np.array([tau_max, tau_max, tau_max])
+min_force = np.array([-1., -1., -1.])
 
 # Initialize the decision variables
 # States
@@ -103,16 +104,16 @@ x = np.empty((n, N+1), dtype=Variable)
 # Controls
 # u = np.empty((m, N), dtype=Variable)
 
-impulse_force = np.empty((3,N), dtype=Variable)  # <-- New Variable
+impulse_force = np.empty((3, N), dtype=Variable)  # <-- New Variable
 
 # for i in range(N):
-    # prog.SetInitialGuess(impulse_force[:, i], np.array([0.1, 0.1, 0.1]))  # Setting a non-zero initial guess
+# prog.SetInitialGuess(impulse_force[:, i], np.array([0.1, 0.1, 0.1]))  # Setting a non-zero initial guess
 
 # Add continuous variables to the program for each parameter
 for i in range(N):
     x[:, i] = prog.NewContinuousVariables(n, 'x' + str(i))
     # u[:, i] = prog.NewContinuousVariables(m, 'u' + str(i))
-    impulse_force[:,i] = prog.NewContinuousVariables(3, 'impulse' + str(i))
+    impulse_force[:, i] = prog.NewContinuousVariables(3, 'impulse' + str(i))
 x[:, N] = prog.NewContinuousVariables(n, 'x' + str(N))
 
 # for i in range(N):
@@ -123,16 +124,15 @@ x[:, N] = prog.NewContinuousVariables(n, 'x' + str(N))
 cnstr_x0 = prog.AddBoundingBoxConstraint(x0, x0, x[:, 0]).evaluator()
 cnstr_x0.set_description("initial sphere/box state")
 
-cnstr_impulse = prog.AddBoundingBoxConstraint(
-    min_force, max_force, impulse_force[0:3, 0]).evaluator()
+# cnstr_impulse = prog.AddBoundingBoxConstraint(
+#     min_force, max_force, impulse_force[0:3, 0]).evaluator()
 # Final
-cnstr_vf = prog.AddBoundingBoxConstraint(
-    qf_cube1, qf_cube1, x[0:7, N]).evaluator()
+cnstr_vf = prog.AddBoundingBoxConstraint(xf, xf, x[:, N]).evaluator()
 cnstr_vf.set_description("final sphere pose")
 
-cnstr_impulse = prog.AddBoundingBoxConstraint(
-    np.zeros((3,N-1)), np.zeros((3,N-1)), impulse_force[0:3, 1:N]).evaluator()
-cnstr_vf.set_description("final sphere pose")
+# cnstr_impulse = prog.AddBoundingBoxConstraint(
+#     np.zeros((3, N-1)), np.zeros((3, N-1)), impulse_force[0:3, 1:N]).evaluator()
+# cnstr_vf.set_description("final sphere pose")
 
 xx1_idx = q0_cube1.size-3
 xy1_idx = q0_cube1.size-2
@@ -167,16 +167,22 @@ def eval_vel_constraints(z):
     q_next = z[n:n+nq]
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
-    impulse=z[2*n:2*n+3]
+    impulse = z[2*n:2*n+3]
+    print("q_curr\n", ExtractValue(q_curr).transpose())
+    print("q_next\n", ExtractValue(q_next).transpose())
+    print("impulse\n", ExtractValue(impulse).transpose())
 
-    v_curr[3:6] += impulse/mass*dt
+    v_curr[3:6] = impulse/mass*dt
+    print("v_curr[3:6]\n", ExtractValue(v_curr[3:6]).transpose())
 
     pos_inc = v_curr[3:6]*dt
-    ori_inc = v_curr[0:3]*dt*edge_length
-    pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
+    print("pos_inc\n", ExtractValue(pos_inc).transpose())
+
+    # ori_inc = v_curr[0:3]*dt*edge_length
+    pos1 = q_curr[4:7] + pos_inc - q_next[4:7]
+    print("pos1\n", ExtractValue(pos1).transpose())
 
     return np.hstack((pos1))
-
 
 
 # Build the program
@@ -185,7 +191,13 @@ for i in range(N+1):
     prog.SetInitialGuess(x[:, i], x0)
 
     AddUnitQuaternionConstraintOnPlant(
+        plant, x[:plant.num_positions(), i], prog)
+
+    AddUnitQuaternionConstraintOnPlant(
         plant_ad, x[:plant_ad.num_positions(), i], prog)
+
+    prog.AddBoundingBoxConstraint(
+        np.zeros(3), np.zeros(3), x[7:10, i])
 
     if i < N:
         v_vars = np.hstack((x[:, i], x[:, i+1], impulse_force[:, i]))
@@ -197,6 +209,9 @@ for i in range(N+1):
             vars=v_vars).evaluator()
         cnstr_vel.set_description(f"cnstr_vel at step {i}")
 
+        cnstr_impulse = prog.AddBoundingBoxConstraint(
+            0.0*np.ones(3), max_force, impulse_force[:, i]).evaluator()
+
         # cnstr_tau_pos = prog.AddBoundingBoxConstraint(
         #     -tau_max * np.ones(3), tau_max * np.ones(3), u[0:3, i]).evaluator()
         # cnstr_tau_pos.set_description(f"cnstr_tau_pos at step {i}")
@@ -207,7 +222,7 @@ for i in range(N+1):
 
         # Penalize the slack variable
         # prog.AddLinearCost(w_effort*np.sum(u[:, i]))
-        prog.AddCost(np.sum(impulse_force[:, i]**2))
+        # prog.AddCost(np.sum(impulse_force[:, i]**2))
 
 
 # ======================
@@ -240,9 +255,10 @@ for c in infeasible_constraints:
 # Get and print the solution
 x_sol = result.GetSolution(x)
 # u_sol = result.GetSolution(u)
-print(x_sol)
+print(x_sol.transpose())
 
-impulsive_force_sol = result.GetSolution(impulse_force)  # <-- Fetch the impulsive force from the result
+# <-- Fetch the impulsive force from the result
+impulsive_force_sol = result.GetSolution(impulse_force)
 print(f"Impulsive Force: {impulsive_force_sol}")
 
 infeasible_constraints = result.GetInfeasibleConstraints(prog)
@@ -269,5 +285,5 @@ if simulate:
 
             tm += dt
 
-            time.sleep(0.1)
+            time.sleep(1)
         time.sleep(1)
