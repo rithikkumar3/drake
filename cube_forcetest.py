@@ -2,7 +2,6 @@ import numpy as np
 from pydrake.all import *
 import time
 from simple_block_world import *
-#from quat_operations import *
 
 # ======================
 # WORLD
@@ -94,27 +93,40 @@ w_effort = 1.0
 # control limits [N]
 tau_max = 1.0
 
+max_f = 10.0
+
+min_force = [0.1, 0.1, 0.1]
+max_force = [1, 1, 1]
+
 # Initialize the decision variables
 # States
 x = np.empty((n, N+1), dtype=Variable)
-# Controls
-u = np.empty((m, N), dtype=Variable)
+
+f = np.empty((3,N), dtype=Variable)
 
 # Add continuous variables to the program for each parameter
 for i in range(N):
     x[:, i] = prog.NewContinuousVariables(n, 'x' + str(i))
-    u[:, i] = prog.NewContinuousVariables(m, 'u' + str(i))
+    f[:, i] = prog.NewContinuousVariables(3, 'impulse' + str(i))
 x[:, N] = prog.NewContinuousVariables(n, 'x' + str(N))
 
+prog.AddConstraint(np.sum(f**2) <= max_f**2)
 
 # Initial state
 cnstr_x0 = prog.AddBoundingBoxConstraint(x0, x0, x[:, 0]).evaluator()
 cnstr_x0.set_description("initial sphere/box state")
 
+cnstr_impulse = prog.AddBoundingBoxConstraint(
+    min_force, max_force, f[0:3, 0]).evaluator()
+
+
 # Final
 cnstr_vf = prog.AddBoundingBoxConstraint(
     qf_cube1, qf_cube1, x[0:7, N]).evaluator()
 cnstr_vf.set_description("final sphere pose")
+
+cnstr_impulse = prog.AddBoundingBoxConstraint(
+    np.zeros((3,N-1)), np.zeros((3,N-1)), f[0:3, 1:N]).evaluator()
 
 xx1_idx = q0_cube1.size-3
 xy1_idx = q0_cube1.size-2
@@ -125,6 +137,7 @@ vx1_idx = nq + nv-9
 vy1_idx = nq + nv-8
 vz1_idx = nq + nv-7
 print("vx1_idx: ", vx1_idx)
+
 
 
 # ======================
@@ -150,11 +163,19 @@ def eval_vel_constraints(z):
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
 
+    f_impulse = z[2*n:2*n+3]
+    v_curr[3:6] = f_impulse/mass*dt
+    print("v_curr", v_curr)
+    print("v_next", v_next)
+
+
+    print("f in constraint", f_impulse)
+
     pos_inc = v_curr[3:6]*dt
-    ori_inc = v_curr[0:3]*dt*edge_length
-    pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
+    pos1 = q_curr[4:7] + pos_inc - q_next[4:7]
 
     return np.hstack((pos1))
+
 
 
 # Build the program
@@ -166,7 +187,7 @@ for i in range(N+1):
         plant_ad, x[:plant_ad.num_positions(), i], prog)
 
     if i < N:
-        v_vars = np.hstack((x[:, i], x[:, i+1]))
+        v_vars = np.hstack((x[:, i], x[:, i+1], f[:,i]))
 
         cnstr_vel = prog.AddConstraint(
             eval_vel_constraints,
@@ -174,18 +195,6 @@ for i in range(N+1):
             ub=np.hstack((np.zeros(3))),
             vars=v_vars).evaluator()
         cnstr_vel.set_description(f"cnstr_vel at step {i}")
-
-        cnstr_tau_pos = prog.AddBoundingBoxConstraint(
-            -tau_max * np.ones(3), tau_max * np.ones(3), u[0:3, i]).evaluator()
-        cnstr_tau_pos.set_description(f"cnstr_tau_pos at step {i}")
-
-        cnstr_tau_ori = prog.AddBoundingBoxConstraint(
-            -tau_max * np.ones(3), tau_max * np.ones(3), u[3:6, i]).evaluator()
-        cnstr_tau_ori.set_description(f"cnstr_tau_ori at step {i}")
-
-        # Penalize the slack variable
-        prog.AddLinearCost(w_effort*np.sum(u[:, i]))
-
 
 # ======================
 # SOLVE
@@ -216,7 +225,16 @@ for c in infeasible_constraints:
 
 # Get and print the solution
 x_sol = result.GetSolution(x)
-u_sol = result.GetSolution(u)
+print(x_sol)
+
+impulse_sol = result.GetSolution(f)
+print(impulse_sol)
+
+
+infeasible_constraints = result.GetInfeasibleConstraints(prog)
+for c in infeasible_constraints:
+    print(f"Violated constraint: {c}")
+    print(f"\tViolation: {result.EvalBinding(c)}\n")
 
 # ======================
 # SIMULATE

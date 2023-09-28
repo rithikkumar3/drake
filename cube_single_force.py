@@ -104,6 +104,10 @@ x = np.empty((n, N+1), dtype=Variable)
 # u = np.empty((m, N), dtype=Variable)
 
 impulse_force = np.empty((3,N), dtype=Variable)  # <-- New Variable
+
+# for i in range(N):
+    # prog.SetInitialGuess(impulse_force[:, i], np.array([0.1, 0.1, 0.1]))  # Setting a non-zero initial guess
+
 # Add continuous variables to the program for each parameter
 for i in range(N):
     x[:, i] = prog.NewContinuousVariables(n, 'x' + str(i))
@@ -111,6 +115,9 @@ for i in range(N):
     impulse_force[:,i] = prog.NewContinuousVariables(3, 'impulse' + str(i))
 x[:, N] = prog.NewContinuousVariables(n, 'x' + str(N))
 
+# for i in range(N):
+#     for j in range(3):
+#         prog.SetInitialGuess(impulse_force[j, i], 0.1)
 
 # Initial state
 cnstr_x0 = prog.AddBoundingBoxConstraint(x0, x0, x[:, 0]).evaluator()
@@ -118,8 +125,6 @@ cnstr_x0.set_description("initial sphere/box state")
 
 cnstr_impulse = prog.AddBoundingBoxConstraint(
     min_force, max_force, impulse_force[0:3, 0]).evaluator()
-cnstr_impulse.set_description("final sphere pose")
-
 # Final
 cnstr_vf = prog.AddBoundingBoxConstraint(
     qf_cube1, qf_cube1, x[0:7, N]).evaluator()
@@ -173,6 +178,7 @@ def eval_vel_constraints(z):
     return np.hstack((pos1))
 
 
+
 # Build the program
 for i in range(N+1):
 
@@ -201,6 +207,7 @@ for i in range(N+1):
 
         # Penalize the slack variable
         # prog.AddLinearCost(w_effort*np.sum(u[:, i]))
+        prog.AddCost(np.sum(impulse_force[:, i]**2))
 
 
 # ======================
@@ -237,6 +244,11 @@ print(x_sol)
 
 impulsive_force_sol = result.GetSolution(impulse_force)  # <-- Fetch the impulsive force from the result
 print(f"Impulsive Force: {impulsive_force_sol}")
+
+infeasible_constraints = result.GetInfeasibleConstraints(prog)
+for c in infeasible_constraints:
+    print(f"Violated constraint: {c}")
+    print(f"\tViolation: {result.EvalBinding(c)}\n")
 
 # ======================
 # SIMULATE
