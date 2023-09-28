@@ -207,7 +207,7 @@ for i in range(N+1):
 
         # Penalize the slack variable
         # prog.AddLinearCost(w_effort*np.sum(u[:, i]))
-        prog.AddCost(np.sum(impulse_force[:, i]**2))
+        # prog.AddCost(np.sum(impulse_force[:, i]**2))
 
 
 # ======================
