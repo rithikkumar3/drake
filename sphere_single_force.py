@@ -169,7 +169,7 @@ def eval_vel_constraints(z):
     v_next = z[n+nq:2*n]
     impulse=z[2*n:2*n+3]
 
-    v_curr[3:6] = impulse/mass*dt
+    v_curr[3:6] += impulse/mass*dt
 
     pos_inc = v_curr[3:6]*dt
     ori_inc = v_curr[0:3]*dt*radius
@@ -206,6 +206,10 @@ for i in range(N+1):
 
         # # Penalize the slack variable
         # prog.AddLinearCost(w_effort*np.sum(u[:, i]))
+        prog.AddCost(np.sum((x[:, N] - qf_sphere1)**2))
+        prog.AddCost(w_force * np.dot(impulse_force, impulse_force))
+
+
 
 
 # ======================

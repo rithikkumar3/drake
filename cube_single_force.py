@@ -192,7 +192,7 @@ for i in range(N+1):
 
     AddUnitQuaternionConstraintOnPlant(
         plant, x[:plant.num_positions(), i], prog)
-
+    
     AddUnitQuaternionConstraintOnPlant(
         plant_ad, x[:plant_ad.num_positions(), i], prog)
 
