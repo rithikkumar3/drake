@@ -2,7 +2,7 @@ import numpy as np
 from pydrake.all import *
 import time
 from simple_block_world import *
-#from quat_operations import *
+# from quat_operations import *
 
 # ======================
 # WORLD
@@ -57,7 +57,7 @@ all_contact_pairs = inspector.GetCollisionCandidates()
 # Set the initial state
 q0_sphere1 = np.array([1., 0., 0., 0., 0.0, 0., 0.05])
 v0 = np.zeros(plant.num_velocities())
-x0 = np.hstack((q0_sphere1, v0))   # horizontal stacking one after the other 
+x0 = np.hstack((q0_sphere1, v0))   # horizontal stacking one after the other
 
 # desired final state
 qf_sphere1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
@@ -102,7 +102,7 @@ x = np.empty((n, N+1), dtype=Variable)
 # Controls
 # u = np.empty((m, N), dtype=Variable)
 
-impulse_force = np.empty((3, N), dtype=Variable) 
+impulse_force = np.empty((3, N), dtype=Variable)
 
 # Add continuous variables to the program for each parameter
 for i in range(N):
@@ -163,15 +163,16 @@ def eval_vel_constraints_initial(z):
     q_next = z[n:n+nq]
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
-    
-    impulse = mass*(v_next[3:6]- v_curr[3:6])/dt
+
+    impulse = mass*(v_next[3:6] - v_curr[3:6])/dt
     print(ExtractValue(impulse))
-    
+
     pos_inc = v_curr[3:6]*dt
     ori_inc = v_curr[0:3]*dt*radius
     pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
 
     return np.hstack((pos1))
+
 
 def eval_vel_constraints(z):
     # Select the data type according to the input
@@ -190,17 +191,15 @@ def eval_vel_constraints(z):
     q_next = z[n:n+nq]
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
-    print(v_curr)
+    # print(v_curr)
     impulse = mass*(v_curr[3:6] - v_next[3:6])/dt
-    print(v_next)
+    # print(v_next)
 
     pos_inc = v_curr[3:6]*dt
     ori_inc = v_curr[0:3]*dt*radius
     pos1 = q_curr[4:7] + pos_inc + ori_inc - q_next[4:7]
 
     return np.hstack((pos1))
-
-
 
 
 # Build the program
@@ -213,11 +212,11 @@ for i in range(N+1):
 
     prog.AddBoundingBoxConstraint(
         np.zeros(3), np.zeros(3), x[7:10, i])
-    
-    if i < N:
-        v_vars = np.hstack((x[:, i], x[:, i+1],impulse_force[:, i]))
 
-        if(i==1):
+    if i < N:
+        v_vars = np.hstack((x[:, i], x[:, i+1], impulse_force[:, i]))
+
+        if (i == 1):
             cnstr_vel = prog.AddConstraint(
                 eval_vel_constraints_initial,
                 lb=np.hstack((np.zeros(3))),
@@ -244,9 +243,7 @@ for i in range(N+1):
         # cnstr_tau_ori.set_description(f"cnstr_tau_ori at step {i}")
 
         # # Penalize the slack variable
-        #prog.AddLinearCost(w_effort*np.sum(u[:, i]))
-
-
+        # prog.AddLinearCost(w_effort*np.sum(u[:, i]))
 
 
 # ======================

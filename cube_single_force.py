@@ -93,7 +93,7 @@ w_relax = 1e3
 w_effort = 1.0
 
 # control limits [N]
-tau_max = 50.0
+tau_max = 1000.0
 
 max_force = np.array([tau_max, tau_max, tau_max])
 min_force = np.array([-1., -1., -1.])
@@ -129,6 +129,7 @@ cnstr_x0.set_description("initial sphere/box state")
 # Final
 cnstr_vf = prog.AddBoundingBoxConstraint(xf, xf, x[:, N]).evaluator()
 cnstr_vf.set_description("final sphere pose")
+
 
 # cnstr_impulse = prog.AddBoundingBoxConstraint(
 #     np.zeros((3, N-1)), np.zeros((3, N-1)), impulse_force[0:3, 1:N]).evaluator()
@@ -168,12 +169,14 @@ def eval_vel_constraints(z):
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
     impulse = z[2*n:2*n+3]
-    print("q_curr\n", ExtractValue(q_curr).transpose())
-    print("q_next\n", ExtractValue(q_next).transpose())
+    print("v_curr\n", ExtractValue(v_curr).transpose())
+    print("v_next\n", ExtractValue(v_next).transpose())
     print("impulse\n", ExtractValue(impulse).transpose())
+    print("impulse/mass*dt\n", ExtractValue(impulse/mass*dt).transpose())
 
-    v_curr[3:6] = impulse/mass*dt
-    print("v_curr[3:6]\n", ExtractValue(v_curr[3:6]).transpose())
+    # v_next[3:6] = v_curr[3:6] + impulse/mass*dt
+    # print("v_curr[3:6]\n", ExtractValue(v_curr[3:6]).transpose())
+    v1 = v_next[3:6] - (v_curr[3:6] + impulse/mass*dt)
 
     pos_inc = v_curr[3:6]*dt
     print("pos_inc\n", ExtractValue(pos_inc).transpose())
@@ -182,7 +185,7 @@ def eval_vel_constraints(z):
     pos1 = q_curr[4:7] + pos_inc - q_next[4:7]
     print("pos1\n", ExtractValue(pos1).transpose())
 
-    return np.hstack((pos1))
+    return np.hstack((pos1, v1))
 
 
 # Build the program
@@ -192,7 +195,7 @@ for i in range(N+1):
 
     AddUnitQuaternionConstraintOnPlant(
         plant, x[:plant.num_positions(), i], prog)
-    
+
     AddUnitQuaternionConstraintOnPlant(
         plant_ad, x[:plant_ad.num_positions(), i], prog)
 
@@ -200,12 +203,15 @@ for i in range(N+1):
         np.zeros(3), np.zeros(3), x[7:10, i])
 
     if i < N:
+        prog.SetInitialGuess(
+            impulse_force[:, i], np.array([1.0, 1.0, 1.0]))
+
         v_vars = np.hstack((x[:, i], x[:, i+1], impulse_force[:, i]))
 
         cnstr_vel = prog.AddConstraint(
             eval_vel_constraints,
-            lb=np.hstack((np.zeros(3))),
-            ub=np.hstack((np.zeros(3))),
+            lb=np.hstack((np.zeros(3+3))),
+            ub=np.hstack((np.zeros(3+3))),
             vars=v_vars).evaluator()
         cnstr_vel.set_description(f"cnstr_vel at step {i}")
 
@@ -255,11 +261,11 @@ for c in infeasible_constraints:
 # Get and print the solution
 x_sol = result.GetSolution(x)
 # u_sol = result.GetSolution(u)
-print(x_sol.transpose())
+print("x_sol\n", x_sol.transpose())
 
 # <-- Fetch the impulsive force from the result
 impulsive_force_sol = result.GetSolution(impulse_force)
-print(f"Impulsive Force: {impulsive_force_sol}")
+print(f"Impulsive Force\n: {impulsive_force_sol.transpose()}")
 
 infeasible_constraints = result.GetInfeasibleConstraints(prog)
 for c in infeasible_constraints:
