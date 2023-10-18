@@ -1,4 +1,6 @@
 import numpy as np
+import math
+import torch
 from pydrake.all import *
 import time
 from simple_block_world import *
@@ -60,7 +62,7 @@ v0 = np.zeros(plant.num_velocities())
 x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other
 
 # desired final state
-qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.0, 0.05])
+qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
 xf = np.hstack((qf_cube1, v0))
 
 diagram_context.SetDiscreteState(x0)
@@ -96,7 +98,6 @@ w_effort = 1.0
 tau_max = 3000.0
 
 max_force = np.array([[tau_max], [tau_max], [tau_max]])
-min_force = np.array([[-1.], [-1.], [-1.]])
 mu = 0.7
 
 # Initialize the decision variables
@@ -105,10 +106,12 @@ x = np.empty((n, N+1), dtype=Variable)
 # Controls
 # u = np.empty((m, N), dtype=Variable)
 
-impulse_force = np.empty((3, N), dtype=Variable)  # <-- New Variable
+impulse_force = np.empty((3, N), dtype=Variable)
 friction_force = np.empty((3, N), dtype=Variable)
-f = np.array([[0.0], [0.0], [9.81]])
-friction_force[:, :] = f
+friction_max = mu*9.81*mass
+#f = np.array([[friction_max], [0.0], [0.0]])
+f = np.array([friction_max, 0.0, 0.0])
+#friction_force[:, :] = f
 
 # Add continuous variables to the program for each parameter
 for i in range(N):
@@ -128,7 +131,6 @@ cnstr_vf.set_description("final sphere pose")
 
 cnstr_impulse = prog.AddBoundingBoxConstraint(
     np.zeros((3, N-1)), np.zeros((3, N-1)), impulse_force[0:3, 1:N]).evaluator()
-cnstr_vf.set_description("final sphere pose")
 
 xx1_idx = q0_cube1.size-3
 xy1_idx = q0_cube1.size-2
@@ -168,12 +170,21 @@ def eval_vel_constraints(z):
 
     #v_next[3:6] = v_curr[3:6] + ((impulse - fric) / (mass*dt))
 
-    v1 = v_next[3:6] - (v_curr[3:6] + (impulse - fric*mu) / mass * dt)
+    
+    # x_comp_fric = v_curr[3].value() if isinstance(v_curr[3], AutoDiffXd) else v_curr[3]
+    # y_comp_fric = v_curr[4].value() if isinstance(v_curr[4], AutoDiffXd) else v_curr[4]
+    # theta = np.arctan2(y_comp_fric, x_comp_fric)
+    # fric[0] = ((mu*9.81*mass)*np.cos(theta))
+    # fric[1] = ((mu*9.81*mass)*np.sin(theta))
+
+    a=fric - f
+    v1 = np.subtract(v_next[3:6], np.add(v_curr[3:6], np.subtract(impulse, fric) / mass * dt))
+    print(fric)
 
     pos_inc = v_curr[3:6]*dt
     pos1 = q_curr[4:7] + pos_inc - q_next[4:7]
 
-    return np.hstack((pos1,v1))
+    return np.hstack((pos1,v1,a))
 
 
 # Build the program
@@ -198,13 +209,13 @@ for i in range(N+1):
 
         cnstr_vel = prog.AddConstraint(
             eval_vel_constraints,
-            lb=np.hstack((np.zeros(3+3))),
-            ub=np.hstack((np.zeros(3+3))),
+            lb=np.hstack((np.zeros(3+3+3))),
+            ub=np.hstack((np.zeros(3+3+3))),
             vars=v_vars).evaluator()
         cnstr_vel.set_description(f"cnstr_vel at step {i}")
 
         cnstr_impulse = prog.AddBoundingBoxConstraint(
-            0.0*np.ones(3), max_force, impulse_force[:, i]).evaluator()
+            0.0*np.ones(3).transpose(), max_force, impulse_force[:, i]).evaluator()
 
         # cnstr_tau_pos = prog.AddBoundingBoxConstraint(
         #     -tau_max * np.ones(3), tau_max * np.ones(3), u[0:3, i]).evaluator()
@@ -253,7 +264,8 @@ print("x_sol\n", x_sol.transpose())
 
 # <-- Fetch the impulsive force from the result
 impulsive_force_sol = result.GetSolution(impulse_force)
-print(f"Impulsive Force\n: {impulsive_force_sol.transpose()}")
+print(f"Impulsive Force\n: {impulsive_force_sol}")
+print(0.0*np.ones(3))
 
 infeasible_constraints = result.GetInfeasibleConstraints(prog)
 for c in infeasible_constraints:
