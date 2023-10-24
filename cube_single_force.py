@@ -62,7 +62,7 @@ v0 = np.zeros(plant.num_velocities())
 x0 = np.hstack((q0_cube1, v0))   # horizontal stacking one after the other
 
 # desired final state
-qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.5, 0.05])
+qf_cube1 = np.array([1., 0., 0., 0., 0.5, 0.0, 0.05])
 xf = np.hstack((qf_cube1, v0))
 
 diagram_context.SetDiscreteState(x0)
@@ -76,7 +76,7 @@ simulator.AdvanceTo(0.001)
 
 
 # ======================
-# OPTIMIZATION VARIABLES
+# OPTIMIZATION VARIABLES,
 # ======================
 
 prog = MathematicalProgram()
@@ -109,9 +109,7 @@ x = np.empty((n, N+1), dtype=Variable)
 impulse_force = np.empty((3, N), dtype=Variable)
 friction_force = np.empty((3, N), dtype=Variable)
 friction_max = mu*9.81*mass
-#f = np.array([[friction_max], [0.0], [0.0]])
 f = np.array([friction_max, 0.0, 0.0])
-#friction_force[:, :] = f
 
 # Add continuous variables to the program for each parameter
 for i in range(N):
@@ -132,6 +130,9 @@ cnstr_vf.set_description("final sphere pose")
 cnstr_impulse = prog.AddBoundingBoxConstraint(
     np.zeros((3, N-1)), np.zeros((3, N-1)), impulse_force[0:3, 1:N]).evaluator()
 
+# cnstr_friction = prog.AddBoundingBoxConstraint(
+#     np.zeros(3), f, friction_force[0:3, 1:N]).evaluator()
+
 xx1_idx = q0_cube1.size-3
 xy1_idx = q0_cube1.size-2
 xz1_idx = q0_cube1.size-1
@@ -146,7 +147,6 @@ print("vx1_idx: ", vx1_idx)
 # ======================
 # OPTIMIZATION PROGRAM
 # ======================
-
 
 def eval_vel_constraints(z):
     # Select the data type according to the input
@@ -166,25 +166,14 @@ def eval_vel_constraints(z):
     v_curr = z[nq:n]
     v_next = z[n+nq:2*n]
     impulse = z[2*n:2*n+3]
-    fric = z[2*n+3:2*n+6]
-
-    #v_next[3:6] = v_curr[3:6] + ((impulse - fric) / (mass*dt))
-
     
-    # x_comp_fric = v_curr[3].value() if isinstance(v_curr[3], AutoDiffXd) else v_curr[3]
-    # y_comp_fric = v_curr[4].value() if isinstance(v_curr[4], AutoDiffXd) else v_curr[4]
-    # theta = np.arctan2(y_comp_fric, x_comp_fric)
-    # fric[0] = ((mu*9.81*mass)*np.cos(theta))
-    # fric[1] = ((mu*9.81*mass)*np.sin(theta))
-
-    a=fric - f
-    v1 = np.subtract(v_next[3:6], np.add(v_curr[3:6], np.subtract(impulse, fric) / mass * dt))
-    print(fric)
+    v1 = v_next[3:6] - (v_curr[3:6] + (impulse*dt)/mass - (7*v_curr[3:6]*dt)/mass)
+    print(f)
 
     pos_inc = v_curr[3:6]*dt
     pos1 = q_curr[4:7] + pos_inc - q_next[4:7]
 
-    return np.hstack((pos1,v1,a))
+    return np.hstack((pos1,v1))
 
 
 # Build the program
@@ -205,12 +194,12 @@ for i in range(N+1):
         # prog.SetInitialGuess(
         #     impulse_force[:, i], np.array([1.0, 0.0, 0.0]))
 
-        v_vars = np.hstack((x[:, i], x[:, i+1], impulse_force[:, i], friction_force[:, i]))
-
+        v_vars = np.hstack((x[:, i], x[:, i+1], impulse_force[:, i]))
+        
         cnstr_vel = prog.AddConstraint(
             eval_vel_constraints,
-            lb=np.hstack((np.zeros(3+3+3))),
-            ub=np.hstack((np.zeros(3+3+3))),
+            lb=np.hstack((np.zeros(3+3))),
+            ub=np.hstack((np.zeros(3+3))),
             vars=v_vars).evaluator()
         cnstr_vel.set_description(f"cnstr_vel at step {i}")
 
@@ -235,7 +224,7 @@ for i in range(N+1):
 # ======================
 
 # Select solver
-# solver = IpoptSolver()
+#solver = IpoptSolver()
 solver = SnoptSolver()
 # Set solver options
 solver_options = SolverOptions()
@@ -264,8 +253,7 @@ print("x_sol\n", x_sol.transpose())
 
 # <-- Fetch the impulsive force from the result
 impulsive_force_sol = result.GetSolution(impulse_force)
-print(f"Impulsive Force\n: {impulsive_force_sol}")
-print(0.0*np.ones(3))
+print(f"Impulsive Force\n: {impulsive_force_sol.transpose()}")
 
 infeasible_constraints = result.GetInfeasibleConstraints(prog)
 for c in infeasible_constraints:
