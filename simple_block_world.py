@@ -33,7 +33,7 @@ def add_ground(plant: MultibodyPlant):
     ground_idx = plant.AddModelInstance("ground")
     ground_box = plant.AddRigidBody(
         "ground", ground_idx, SpatialInertia(1, np.array([0, 0, 0]), UnitInertia(1, 1, 1)))
-    X_WG = RigidTransform([0, 0, -0.1])
+    X_WG = RigidTransform([0, 0, -0.05])
     props = get_proximity_properties()
     plant.RegisterCollisionGeometry(
         ground_box, RigidTransform(), Box(2, 2, 0.1), "ground",
@@ -94,7 +94,8 @@ def add_cube(plant: MultibodyPlant, name: str = "cube", color: np.array = [0.0, 
     cube_idx = plant.AddModelInstance(name)
 
     # Calculate inertia for cube (uniform density assumed)
-    I = SpatialInertia(mass=mass, p_PScm_E=np.zeros(3), G_SP_E=UnitInertia.SolidBox(edge_length, edge_length, edge_length))
+    I = SpatialInertia(mass=mass, p_PScm_E=np.zeros(
+        3), G_SP_E=UnitInertia.SolidBox(edge_length, edge_length, edge_length))
 
     # Add the rigid body for cube
     cube = plant.AddRigidBody(name, cube_idx, I)
@@ -102,10 +103,10 @@ def add_cube(plant: MultibodyPlant, name: str = "cube", color: np.array = [0.0, 
     # The pose of the cube
     X_cube = RigidTransform()
 
-    # Friction coefficients 
+    # Friction coefficients
     friction = CoulombFriction(0.7, 0.6)
-    
-    # Proximity properties 
+
+    # Proximity properties
     props = get_proximity_properties()
 
     # Register collision geometry
@@ -117,6 +118,7 @@ def add_cube(plant: MultibodyPlant, name: str = "cube", color: np.array = [0.0, 
         cube, X_cube, Box(edge_length, edge_length, edge_length), name + "_visual", color)
 
     return cube_idx
+
 
 def add_box(plant: MultibodyPlant):
     # Add boxes
