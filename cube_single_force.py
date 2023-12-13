@@ -181,6 +181,8 @@ for i in range(N+1):
 
     prog.SetInitialGuess(x[:, i], x0)
 
+    prog.AddBoundingBoxConstraint(0, 0, x[7:10, i])
+
     AddUnitQuaternionConstraintOnPlant(
         plant, x[:plant.num_positions(), i], prog)
 

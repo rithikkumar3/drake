@@ -1415,3 +1415,1807 @@ EXIT: Restoration Failed!
      201  x    201    EQ          .               .               .               .        -1.316511E+09    284
      202  x    202 A  EQ          .               .               .               .               .         285
      203  x    203 A  EQ          .               .               .               .               .         286
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ 
+ ===>  WARNING - Column     17 of the Jacobian is empty.
+ ===>  WARNING - Column     18 of the Jacobian is empty.
+ ===>  WARNING - Column     19 of the Jacobian is empty.
+ ===>  WARNING - Column     36 of the Jacobian is empty.
+ ===>  WARNING - Column     37 of the Jacobian is empty.
+ ===>  WARNING - Column     38 of the Jacobian is empty.
+ ===>  WARNING - Column     55 of the Jacobian is empty.
+ ===>  WARNING - Column     56 of the Jacobian is empty.
+ ===>  WARNING - Column     57 of the Jacobian is empty.
+ ===>  WARNING - Column     74 of the Jacobian is empty.
+ ===>  WARNING - Column     75 of the Jacobian is empty.
+ ===>  WARNING - Column     76 of the Jacobian is empty.
+ ===>  WARNING - Column     93 of the Jacobian is empty.
+ ===>  WARNING - Column     94 of the Jacobian is empty.
+ ===>  WARNING - Column     95 of the Jacobian is empty.
+ ===>  WARNING - Column    112 of the Jacobian is empty.
+ ===>  WARNING - Column    113 of the Jacobian is empty.
+ ===>  WARNING - Column    114 of the Jacobian is empty.
+ ===>  WARNING - Column    131 of the Jacobian is empty.
+ ===>  WARNING - Column    132 of the Jacobian is empty.
+ ===>  WARNING - Column    133 of the Jacobian is empty.
+ ===>  WARNING - Column    150 of the Jacobian is empty.
+ ===>  WARNING - Column    151 of the Jacobian is empty.
+ ===>  WARNING - Column    152 of the Jacobian is empty.
+ ===>  WARNING - Column    169 of the Jacobian is empty.
+ ===>  WARNING - Column    170 of the Jacobian is empty.
+ ===>  WARNING - Column    171 of the Jacobian is empty.
+ ===>  WARNING - Column    188 of the Jacobian is empty.
+ ===>  WARNING - Column    189 of the Jacobian is empty.
+ ===>  WARNING - Column    190 of the Jacobian is empty.
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........     10000
+ Scale option...........         0       Minor optimality  tol..  1.00E-06       Minor print level......         1
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+ QP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars         0       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......       174       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....       174       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      1000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)...... 9999999.0       Major optimality tol...  2.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Limited-Memory Hessian.                 Hessian updates........        10       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..        82       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars       173
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows             83           0           1          82           0
+ Columns         203           0         120          80           3
+
+ No. of matrix elements                 1828     Density      10.849
+ Biggest  constant element        0.0000E+00  (excluding fixed columns,
+ Smallest constant element        0.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints      82     Linear constraints       1
+ Nonlinear variables       173     Linear variables        30
+ Jacobian  variables       173     Objective variables      0
+ Total constraints          83     Total variables        203
+1
+ 
+
+ 
+ The user has defined    1828   out of    1828   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    1.01E-09  in constraint   253
+ 
+1
+ 
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+      2     0      2              1  2.5E-01 (1.2E-17) 5.0000000E+09     172            1 8.0E+00         _  r i
+1
+ 
+ SNOPTA EXIT  10 -- the problem appears to be infeasible
+ SNOPTA INFO  13 -- nonlinear infeasibilities minimized
+
+ Problem name                 drake_pr
+ No. of iterations                   2   Objective            0.0000000000E+00
+ No. of major iterations             0   Linear    obj. term  0.0000000000E+00
+ Penalty parameter           0.000E+00   Nonlinear obj. term  0.0000000000E+00
+ Elastic weight                1.0E+10   Elastic   objective  5.0000000000E+09
+                                         Elastic infeas       5.0000000000E-01
+ User function calls (total)         2
+ No. of superbasics                  1   No. of basic nonlinears            63
+ No. of degenerate steps             1   Percentage                      50.00
+ Max x                       1 1.0E+00   Max pi                      3 1.0E+10
+ Max Primal infeas         279 5.0E-01   Max Dual infeas           163 1.2E-07
+ Nonlinear constraint violn    5.0E-01
+1
+ 
+ Name           drake_pr                 Objective Value      0.0000000000E+00
+
+ Status         Optimal Soln             Iteration      2    Superbasics     1
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+     204  r      1    BS          .               .                None            None         -1.0          1
+     205  r      2 D  BS         1.0              .              1.0             1.0              .           2
+     206  r      3 D  BS         1.0              .              1.0             1.0              .           3
+     207  r      4    EQ          .               .               .               .         1.000000E+10      4
+     208  r      5 A  EQ          .               .               .               .               .           5
+     209  r      6 A  EQ          .               .               .               .               .           6
+     210  r      7 A  EQ          .               .               .               .               .           7
+     211  r      8 A  EQ          .               .               .               .               .           8
+     212  r      9 A  EQ          .               .               .               .               .           9
+     213  r     10 A  EQ         1.0              .              1.0             1.0              .          10
+     214  r     11 D  BS         1.0              .              1.0             1.0              .          11
+     215  r     12 D  BS          .               .               .               .         1.000000E+10     12
+     216  r     13 D  BS          .               .               .               .               .          13
+     217  r     14 D  BS          .               .               .               .               .          14
+     218  r     15    EQ          .               .               .               .      107526881.72043     15
+     219  r     16 D  BS          .               .               .               .               .          16
+     220  r     17 D  BS          .               .               .               .               .          17
+     221  r     18 A  EQ         1.0              .              1.0             1.0              .          18
+     222  r     19 D  BS         1.0              .              1.0             1.0              .          19
+     223  r     20    EQ          .               .               .               .         1.000000E+10     20
+     224  r     21 A  EQ          .               .               .               .               .          21
+     225  r     22 A  EQ          .               .               .               .               .          22
+     226  r     23    EQ          .               .               .               .      223147184.64562     23
+     227  r     24 A  EQ          .               .               .               .               .          24
+     228  r     25 A  EQ          .               .               .               .               .          25
+     229  r     26 A  EQ         1.0              .              1.0             1.0              .          26
+     230  r     27 D  BS         1.0              .              1.0             1.0              .          27
+     231  r     28    EQ          .               .               .               .         1.000000E+10     28
+     232  r     29 A  EQ          .               .               .               .               .          29
+     233  r     30 A  EQ          .               .               .               .               .          30
+     234  r     31    EQ          .               .               .               .      347470091.01680     31
+     235  r     32 A  EQ          .               .               .               .               .          32
+     236  r     33 A  EQ          .               .               .               .               .          33
+     237  r     34 A  EQ         1.0              .              1.0             1.0              .          34
+     238  r     35 D  BS         1.0              .              1.0             1.0              .          35
+     239  r     36    EQ          .               .               .               .         1.000000E+10     36
+     240  r     37 A  EQ          .               .               .               .               .          37
+     241  r     38 A  EQ          .               .               .               .               .          38
+     242  r     39    EQ          .               .               .               .      481150635.50194     39
+     243  r     40 A  EQ          .               .               .               .               .          40
+     244  r     41 A  EQ          .               .               .               .               .          41
+     245  r     42 A  EQ         1.0              .              1.0             1.0              .          42
+     246  r     43 D  BS         1.0              .              1.0             1.0              .          43
+     247  r     44    EQ          .               .               .               .         1.000000E+10     44
+     248  r     45 A  EQ          .               .               .               .               .          45
+     249  r     46 A  EQ          .               .               .               .               .          46
+     250  r     47    EQ          .               .               .               .      624893156.45369     47
+     251  r     48 A  EQ          .               .               .               .               .          48
+     252  r     49 A  EQ          .               .               .               .               .          49
+     253  r     50 A  EQ         1.0              .              1.0             1.0              .          50
+     254  r     51 D  BS         1.0              .              1.0             1.0              .          51
+     255  r     52    EQ          .               .               .               .         1.000000E+10     52
+     256  r     53 A  EQ          .               .               .               .               .          53
+     257  r     54 A  EQ          .               .               .               .               .          54
+     258  r     55    EQ          .               .               .               .      779455006.93946     55
+     259  r     56 A  EQ          .               .               .               .               .          56
+     260  r     57 A  EQ          .               .               .               .               .          57
+     261  r     58 A  EQ         1.0              .              1.0             1.0              .          58
+     262  r     59 D  BS         1.0              .              1.0             1.0              .          59
+     263  r     60    EQ          .               .               .               .         1.000000E+10     60
+     264  r     61 A  EQ          .               .               .               .               .          61
+     265  r     62 A  EQ          .               .               .               .               .          62
+     266  r     63    EQ          .               .               .               .      945650545.09619     63
+     267  r     64 A  EQ          .               .               .               .               .          64
+     268  r     65 A  EQ          .               .               .               .               .          65
+     269  r     66 A  EQ         1.0              .              1.0             1.0              .          66
+     270  r     67 D  BS         1.0              .              1.0             1.0              .          67
+     271  r     68    EQ          .               .               .               .         1.000000E+10     68
+     272  r     69 A  EQ          .               .               .               .               .          69
+     273  r     70 A  EQ          .               .               .               .               .          70
+     274  r     71    EQ          .               .               .               .         1.124355E+09     71
+     275  r     72 A  EQ          .               .               .               .               .          72
+     276  r     73 A  EQ          .               .               .               .               .          73
+     277  r     74 A  EQ         1.0              .              1.0             1.0              .          74
+     278  r     75 D  BS         1.0              .              1.0             1.0              .          75
+     279  r     76 I  BS        -0.50000        -0.50000          .               .         1.000000E+10     76
+     280  r     77 A  EQ          .               .               .               .               .          77
+     281  r     78 A  EQ          .               .               .               .               .          78
+     282  r     79    EQ          .               .               .               .         1.316511E+09     79
+     283  r     80 A  EQ          .               .               .               .               .          80
+     284  r     81 A  EQ          .               .               .               .               .          81
+     285  r     82 D  BS         1.0              .              1.0             1.0              .          82
+     286  r     83 D  BS         1.0              .              1.0             1.0              .          83
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1 A  EQ         1.0              .              1.0             1.0              .          84
+       2  x      2 A  EQ          .               .               .               .               .          85
+       3  x      3 A  EQ          .               .               .               .               .          86
+       4  x      4 A  EQ          .               .               .               .               .          87
+       5  x      5    EQ          .               .               .               .        -1.000000E+10     88
+       6  x      6 A  EQ          .               .               .               .               .          89
+       7  x      7 A  EQ         0.05000          .              0.05000         0.05000          .          90
+       8  x      8 A  EQ          .               .               .               .               .          91
+       9  x      9 A  EQ          .               .               .               .               .          92
+      10  x     10 A  EQ          .               .               .               .               .          93
+      11  x     11    EQ          .               .               .               .     -100000000.00000     94
+      12  x     12 A  EQ          .               .               .               .               .          95
+      13  x     13 A  EQ          .               .               .               .               .          96
+      14  x     14 D  BS          .               .               .           3000.00000          .          97
+      15  x     15 A  LL          .               .               .           3000.00000          .          98
+      16  x     16 A  LL          .               .               .           3000.00000          .          99
+      17  x     17 A  FR          .               .                None            None           .         100
+      18  x     18 A  FR          .               .                None            None           .         101
+      19  x     19 A  FR          .               .                None            None           .         102
+      20  x     20    BS         1.0              .                None            None           .         103
+      21  x     21 A  FR          .               .                None            None           .         104
+      22  x     22 A  FR          .               .                None            None           .         105
+      23  x     23 A  FR          .               .                None            None           .         106
+      24  x     24    BS          .               .                None            None           .         107
+      25  x     25    BS          .               .                None            None           .         108
+      26  x     26    BS         0.05000          .                None            None           .         109
+      27  x     27 A  EQ          .               .               .               .               .         110
+      28  x     28 A  EQ          .               .               .               .               .         111
+      29  x     29 A  EQ          .               .               .               .               .         112
+      30  x     30    BS          .               .                None            None           .         113
+      31  x     31    BS          .               .                None            None           .         114
+      32  x     32    BS          .               .                None            None           .         115
+      33  x     33    EQ          .               .               .               .        1075268.81720    116
+      34  x     34 A  EQ          .               .               .               .               .         117
+      35  x     35 A  EQ          .               .               .               .               .         118
+      36  x     36 A  FR          .               .                None            None           .         119
+      37  x     37 A  FR          .               .                None            None           .         120
+      38  x     38 A  FR          .               .                None            None           .         121
+      39  x     39    BS         1.0              .                None            None           .         122
+      40  x     40 A  FR          .               .                None            None           .         123
+      41  x     41 A  FR          .               .                None            None           .         124
+      42  x     42 A  FR          .               .                None            None           .         125
+      43  x     43    BS          .               .                None            None           .         126
+      44  x     44    BS          .               .                None            None           .         127
+      45  x     45    BS         0.05000          .                None            None           .         128
+      46  x     46 A  EQ          .               .               .               .               .         129
+      47  x     47 A  EQ          .               .               .               .               .         130
+      48  x     48 A  EQ          .               .               .               .               .         131
+      49  x     49    BS          .               .                None            None           .         132
+      50  x     50    BS          .               .                None            None           .         133
+      51  x     51    BS          .               .                None            None           .         134
+      52  x     52    EQ          .               .               .               .        2231471.84646    135
+      53  x     53 A  EQ          .               .               .               .               .         136
+      54  x     54 A  EQ          .               .               .               .               .         137
+      55  x     55 A  FR          .               .                None            None           .         138
+      56  x     56 A  FR          .               .                None            None           .         139
+      57  x     57 A  FR          .               .                None            None           .         140
+      58  x     58    BS         1.0              .                None            None           .         141
+      59  x     59 A  FR          .               .                None            None           .         142
+      60  x     60 A  FR          .               .                None            None           .         143
+      61  x     61 A  FR          .               .                None            None           .         144
+      62  x     62    BS          .               .                None            None           .         145
+      63  x     63    BS          .               .                None            None           .         146
+      64  x     64    BS         0.05000          .                None            None           .         147
+      65  x     65 A  EQ          .               .               .               .               .         148
+      66  x     66 A  EQ          .               .               .               .               .         149
+      67  x     67 A  EQ          .               .               .               .               .         150
+      68  x     68    BS          .               .                None            None           .         151
+      69  x     69    BS          .               .                None            None           .         152
+      70  x     70    BS          .               .                None            None           .         153
+      71  x     71    EQ          .               .               .               .        3474700.91017    154
+      72  x     72 A  EQ          .               .               .               .               .         155
+      73  x     73 A  EQ          .               .               .               .               .         156
+      74  x     74 A  FR          .               .                None            None           .         157
+      75  x     75 A  FR          .               .                None            None           .         158
+      76  x     76 A  FR          .               .                None            None           .         159
+      77  x     77    BS         1.0              .                None            None           .         160
+      78  x     78 A  FR          .               .                None            None           .         161
+      79  x     79 A  FR          .               .                None            None           .         162
+      80  x     80 A  FR          .               .                None            None           .         163
+      81  x     81    BS          .               .                None            None           .         164
+      82  x     82    BS          .               .                None            None           .         165
+      83  x     83    BS         0.05000          .                None            None           .         166
+      84  x     84 A  EQ          .               .               .               .               .         167
+      85  x     85 A  EQ          .               .               .               .               .         168
+      86  x     86 A  EQ          .               .               .               .               .         169
+      87  x     87    BS          .               .                None            None           .         170
+      88  x     88    BS          .               .                None            None           .         171
+      89  x     89    BS          .               .                None            None           .         172
+      90  x     90    EQ          .               .               .               .        4811506.35502    173
+      91  x     91 A  EQ          .               .               .               .               .         174
+      92  x     92 A  EQ          .               .               .               .               .         175
+      93  x     93 A  FR          .               .                None            None           .         176
+      94  x     94 A  FR          .               .                None            None           .         177
+      95  x     95 A  FR          .               .                None            None           .         178
+      96  x     96    BS         1.0              .                None            None           .         179
+      97  x     97 A  FR          .               .                None            None           .         180
+      98  x     98 A  FR          .               .                None            None           .         181
+      99  x     99 A  FR          .               .                None            None           .         182
+     100  x    100    BS          .               .                None            None           .         183
+     101  x    101    BS          .               .                None            None           .         184
+     102  x    102    BS         0.05000          .                None            None           .         185
+     103  x    103 A  EQ          .               .               .               .               .         186
+     104  x    104 A  EQ          .               .               .               .               .         187
+     105  x    105 A  EQ          .               .               .               .               .         188
+     106  x    106    BS          .               .                None            None           .         189
+     107  x    107    BS          .               .                None            None           .         190
+     108  x    108    BS          .               .                None            None           .         191
+     109  x    109    EQ          .               .               .               .        6248931.56454    192
+     110  x    110 A  EQ          .               .               .               .               .         193
+     111  x    111 A  EQ          .               .               .               .               .         194
+     112  x    112 A  FR          .               .                None            None           .         195
+     113  x    113 A  FR          .               .                None            None           .         196
+     114  x    114 A  FR          .               .                None            None           .         197
+     115  x    115    BS         1.0              .                None            None           .         198
+     116  x    116 A  FR          .               .                None            None           .         199
+     117  x    117 A  FR          .               .                None            None           .         200
+     118  x    118 A  FR          .               .                None            None           .         201
+     119  x    119   SBS          .               .                None            None           .         202
+     120  x    120    BS          .               .                None            None           .         203
+     121  x    121    BS         0.05000          .                None            None           .         204
+     122  x    122 A  EQ          .               .               .               .               .         205
+     123  x    123 A  EQ          .               .               .               .               .         206
+     124  x    124 A  EQ          .               .               .               .               .         207
+     125  x    125    BS          .               .                None            None           .         208
+     126  x    126    BS          .               .                None            None           .         209
+     127  x    127    BS          .               .                None            None           .         210
+     128  x    128    EQ          .               .               .               .        7794550.06939    211
+     129  x    129 A  EQ          .               .               .               .               .         212
+     130  x    130 A  EQ          .               .               .               .               .         213
+     131  x    131 A  FR          .               .                None            None           .         214
+     132  x    132 A  FR          .               .                None            None           .         215
+     133  x    133 A  FR          .               .                None            None           .         216
+     134  x    134    BS         1.0              .                None            None           .         217
+     135  x    135 A  FR          .               .                None            None           .         218
+     136  x    136 A  FR          .               .                None            None           .         219
+     137  x    137 A  FR          .               .                None            None           .         220
+     138  x    138    BS          .               .                None            None           .         221
+     139  x    139    BS          .               .                None            None           .         222
+     140  x    140    BS         0.05000          .                None            None           .         223
+     141  x    141 A  EQ          .               .               .               .               .         224
+     142  x    142 A  EQ          .               .               .               .               .         225
+     143  x    143 A  EQ          .               .               .               .               .         226
+     144  x    144    BS          .               .                None            None           .         227
+     145  x    145    BS          .               .                None            None           .         228
+     146  x    146    BS          .               .                None            None           .         229
+     147  x    147    EQ          .               .               .               .        9456505.45096    230
+     148  x    148 A  EQ          .               .               .               .               .         231
+     149  x    149 A  EQ          .               .               .               .               .         232
+     150  x    150 A  FR          .               .                None            None           .         233
+     151  x    151 A  FR          .               .                None            None           .         234
+     152  x    152 A  FR          .               .                None            None           .         235
+     153  x    153    BS         1.0              .                None            None           .         236
+     154  x    154 A  FR          .               .                None            None           .         237
+     155  x    155 A  FR          .               .                None            None           .         238
+     156  x    156 A  FR          .               .                None            None           .         239
+     157  x    157    BS          .               .                None            None           .         240
+     158  x    158    BS          .               .                None            None           .         241
+     159  x    159    BS         0.05000          .                None            None           .         242
+     160  x    160 A  EQ          .               .               .               .               .         243
+     161  x    161 A  EQ          .               .               .               .               .         244
+     162  x    162 A  EQ          .               .               .               .               .         245
+     163  x    163    BS          .               .                None            None          0.00000    246
+     164  x    164    BS          .               .                None            None           .         247
+     165  x    165    BS          .               .                None            None           .         248
+     166  x    166    EQ          .               .               .               .       11243554.24835    249
+     167  x    167 A  EQ          .               .               .               .               .         250
+     168  x    168 A  EQ          .               .               .               .               .         251
+     169  x    169 A  FR          .               .                None            None           .         252
+     170  x    170 A  FR          .               .                None            None           .         253
+     171  x    171 A  FR          .               .                None            None           .         254
+     172  x    172    BS         1.0              .                None            None           .         255
+     173  x    173 A  FR          .               .                None            None           .         256
+     174  x    174 A  FR          .               .                None            None           .         257
+     175  x    175 A  FR          .               .                None            None           .         258
+     176  x    176    BS          .               .                None            None           .         259
+     177  x    177    BS          .               .                None            None           .         260
+     178  x    178    BS         0.05000          .                None            None           .         261
+     179  x    179 A  EQ          .               .               .               .               .         262
+     180  x    180 A  EQ          .               .               .               .               .         263
+     181  x    181 A  EQ          .               .               .               .               .         264
+     182  x    182    BS          .               .                None            None           .         265
+     183  x    183    BS          .               .                None            None           .         266
+     184  x    184    BS          .               .                None            None           .         267
+     185  x    185    EQ          .               .               .               .       13165112.09500    268
+     186  x    186 A  EQ          .               .               .               .               .         269
+     187  x    187 A  EQ          .               .               .               .               .         270
+     188  x    188 A  FR          .               .                None            None           .         271
+     189  x    189 A  FR          .               .                None            None           .         272
+     190  x    190 A  FR          .               .                None            None           .         273
+     191  x    191 A  EQ         1.0              .              1.0             1.0              .         274
+     192  x    192 A  EQ          .               .               .               .               .         275
+     193  x    193 N  EQ          .               .               .               .               .         276
+     194  x    194 A  EQ          .               .               .               .               .         277
+     195  x    195    EQ         0.50000          .              0.50000         0.50000    1.000000E+10    278
+     196  x    196 A  EQ          .               .               .               .               .         279
+     197  x    197 A  EQ         0.05000          .              0.05000         0.05000          .         280
+     198  x    198 A  EQ          .               .               .               .               .         281
+     199  x    199 A  EQ          .               .               .               .               .         282
+     200  x    200 A  EQ          .               .               .               .               .         283
+     201  x    201    EQ          .               .               .               .        -1.316511E+09    284
+     202  x    202 A  EQ          .               .               .               .               .         285
+     203  x    203 A  EQ          .               .               .               .               .         286
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ XXX  The bounds on variable      1  are inconsistent.  xlow =    1.000000      xupp =    0.000000
+
+ XXX  The bounds on variable    191  are inconsistent.  xlow =    1.000000      xupp =    0.000000
+
+ XXX  Invalid arguments xlow, xupp:      2 inconsistent bounds or infinite equal bounds.
+1
+ 
+ SNOPTA EXIT  90 -- input arguments out of range
+ SNOPTA INFO  91 -- invalid input argument
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ XXX  The bounds on variable      1  are inconsistent.  xlow =    1.000000      xupp =    0.000000
+
+ XXX  Invalid arguments xlow, xupp:      1 inconsistent bounds or infinite equal bounds.
+1
+ 
+ SNOPTA EXIT  90 -- input arguments out of range
+ SNOPTA INFO  91 -- invalid input argument
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ 
+ ===>  WARNING - Column     17 of the Jacobian is empty.
+ ===>  WARNING - Column     18 of the Jacobian is empty.
+ ===>  WARNING - Column     19 of the Jacobian is empty.
+ ===>  WARNING - Column     36 of the Jacobian is empty.
+ ===>  WARNING - Column     37 of the Jacobian is empty.
+ ===>  WARNING - Column     38 of the Jacobian is empty.
+ ===>  WARNING - Column     55 of the Jacobian is empty.
+ ===>  WARNING - Column     56 of the Jacobian is empty.
+ ===>  WARNING - Column     57 of the Jacobian is empty.
+ ===>  WARNING - Column     74 of the Jacobian is empty.
+ ===>  WARNING - Column     75 of the Jacobian is empty.
+ ===>  WARNING - Column     76 of the Jacobian is empty.
+ ===>  WARNING - Column     93 of the Jacobian is empty.
+ ===>  WARNING - Column     94 of the Jacobian is empty.
+ ===>  WARNING - Column     95 of the Jacobian is empty.
+ ===>  WARNING - Column    112 of the Jacobian is empty.
+ ===>  WARNING - Column    113 of the Jacobian is empty.
+ ===>  WARNING - Column    114 of the Jacobian is empty.
+ ===>  WARNING - Column    131 of the Jacobian is empty.
+ ===>  WARNING - Column    132 of the Jacobian is empty.
+ ===>  WARNING - Column    133 of the Jacobian is empty.
+ ===>  WARNING - Column    150 of the Jacobian is empty.
+ ===>  WARNING - Column    151 of the Jacobian is empty.
+ ===>  WARNING - Column    152 of the Jacobian is empty.
+ ===>  WARNING - Column    169 of the Jacobian is empty.
+ ===>  WARNING - Column    170 of the Jacobian is empty.
+ ===>  WARNING - Column    171 of the Jacobian is empty.
+ ===>  WARNING - Column    188 of the Jacobian is empty.
+ ===>  WARNING - Column    189 of the Jacobian is empty.
+ ===>  WARNING - Column    190 of the Jacobian is empty.
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........     10000
+ Scale option...........         0       Minor optimality  tol..  1.00E-06       Minor print level......         1
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+ QP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars         0       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......       174       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....       174       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      1000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)...... 9999999.0       Major optimality tol...  2.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Limited-Memory Hessian.                 Hessian updates........        10       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..        82       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars       173
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows             83           0           1          82           0
+ Columns         203           0         120          80           3
+
+ No. of matrix elements                 1828     Density      10.849
+ Biggest  constant element        0.0000E+00  (excluding fixed columns,
+ Smallest constant element        0.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints      82     Linear constraints       1
+ Nonlinear variables       173     Linear variables        30
+ Jacobian  variables       173     Objective variables      0
+ Total constraints          83     Total variables        203
+1
+ 
+
+ 
+ The user has defined    1828   out of    1828   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    1.01E-09  in constraint   253
+ 
+1
+ 
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+      2     0      2              1  2.5E-01 (1.2E-17) 5.0000000E+09     172            1 8.0E+00         _  r i
+1
+ 
+ SNOPTA EXIT  10 -- the problem appears to be infeasible
+ SNOPTA INFO  13 -- nonlinear infeasibilities minimized
+
+ Problem name                 drake_pr
+ No. of iterations                   2   Objective            0.0000000000E+00
+ No. of major iterations             0   Linear    obj. term  0.0000000000E+00
+ Penalty parameter           0.000E+00   Nonlinear obj. term  0.0000000000E+00
+ Elastic weight                1.0E+10   Elastic   objective  5.0000000000E+09
+                                         Elastic infeas       5.0000000000E-01
+ User function calls (total)         2
+ No. of superbasics                  1   No. of basic nonlinears            63
+ No. of degenerate steps             1   Percentage                      50.00
+ Max x                       1 1.0E+00   Max pi                      3 1.0E+10
+ Max Primal infeas         279 5.0E-01   Max Dual infeas           163 1.2E-07
+ Nonlinear constraint violn    5.0E-01
+1
+ 
+ Name           drake_pr                 Objective Value      0.0000000000E+00
+
+ Status         Optimal Soln             Iteration      2    Superbasics     1
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+     204  r      1    BS          .               .                None            None         -1.0          1
+     205  r      2 D  BS         1.0              .              1.0             1.0              .           2
+     206  r      3 D  BS         1.0              .              1.0             1.0              .           3
+     207  r      4    EQ          .               .               .               .         1.000000E+10      4
+     208  r      5 A  EQ          .               .               .               .               .           5
+     209  r      6 A  EQ          .               .               .               .               .           6
+     210  r      7 A  EQ          .               .               .               .               .           7
+     211  r      8 A  EQ          .               .               .               .               .           8
+     212  r      9 A  EQ          .               .               .               .               .           9
+     213  r     10 A  EQ         1.0              .              1.0             1.0              .          10
+     214  r     11 D  BS         1.0              .              1.0             1.0              .          11
+     215  r     12 D  BS          .               .               .               .         1.000000E+10     12
+     216  r     13 D  BS          .               .               .               .               .          13
+     217  r     14 D  BS          .               .               .               .               .          14
+     218  r     15    EQ          .               .               .               .      107526881.72043     15
+     219  r     16 D  BS          .               .               .               .               .          16
+     220  r     17 D  BS          .               .               .               .               .          17
+     221  r     18 A  EQ         1.0              .              1.0             1.0              .          18
+     222  r     19 D  BS         1.0              .              1.0             1.0              .          19
+     223  r     20    EQ          .               .               .               .         1.000000E+10     20
+     224  r     21 A  EQ          .               .               .               .               .          21
+     225  r     22 A  EQ          .               .               .               .               .          22
+     226  r     23    EQ          .               .               .               .      223147184.64562     23
+     227  r     24 A  EQ          .               .               .               .               .          24
+     228  r     25 A  EQ          .               .               .               .               .          25
+     229  r     26 A  EQ         1.0              .              1.0             1.0              .          26
+     230  r     27 D  BS         1.0              .              1.0             1.0              .          27
+     231  r     28    EQ          .               .               .               .         1.000000E+10     28
+     232  r     29 A  EQ          .               .               .               .               .          29
+     233  r     30 A  EQ          .               .               .               .               .          30
+     234  r     31    EQ          .               .               .               .      347470091.01680     31
+     235  r     32 A  EQ          .               .               .               .               .          32
+     236  r     33 A  EQ          .               .               .               .               .          33
+     237  r     34 A  EQ         1.0              .              1.0             1.0              .          34
+     238  r     35 D  BS         1.0              .              1.0             1.0              .          35
+     239  r     36    EQ          .               .               .               .         1.000000E+10     36
+     240  r     37 A  EQ          .               .               .               .               .          37
+     241  r     38 A  EQ          .               .               .               .               .          38
+     242  r     39    EQ          .               .               .               .      481150635.50194     39
+     243  r     40 A  EQ          .               .               .               .               .          40
+     244  r     41 A  EQ          .               .               .               .               .          41
+     245  r     42 A  EQ         1.0              .              1.0             1.0              .          42
+     246  r     43 D  BS         1.0              .              1.0             1.0              .          43
+     247  r     44    EQ          .               .               .               .         1.000000E+10     44
+     248  r     45 A  EQ          .               .               .               .               .          45
+     249  r     46 A  EQ          .               .               .               .               .          46
+     250  r     47    EQ          .               .               .               .      624893156.45369     47
+     251  r     48 A  EQ          .               .               .               .               .          48
+     252  r     49 A  EQ          .               .               .               .               .          49
+     253  r     50 A  EQ         1.0              .              1.0             1.0              .          50
+     254  r     51 D  BS         1.0              .              1.0             1.0              .          51
+     255  r     52    EQ          .               .               .               .         1.000000E+10     52
+     256  r     53 A  EQ          .               .               .               .               .          53
+     257  r     54 A  EQ          .               .               .               .               .          54
+     258  r     55    EQ          .               .               .               .      779455006.93946     55
+     259  r     56 A  EQ          .               .               .               .               .          56
+     260  r     57 A  EQ          .               .               .               .               .          57
+     261  r     58 A  EQ         1.0              .              1.0             1.0              .          58
+     262  r     59 D  BS         1.0              .              1.0             1.0              .          59
+     263  r     60    EQ          .               .               .               .         1.000000E+10     60
+     264  r     61 A  EQ          .               .               .               .               .          61
+     265  r     62 A  EQ          .               .               .               .               .          62
+     266  r     63    EQ          .               .               .               .      945650545.09619     63
+     267  r     64 A  EQ          .               .               .               .               .          64
+     268  r     65 A  EQ          .               .               .               .               .          65
+     269  r     66 A  EQ         1.0              .              1.0             1.0              .          66
+     270  r     67 D  BS         1.0              .              1.0             1.0              .          67
+     271  r     68    EQ          .               .               .               .         1.000000E+10     68
+     272  r     69 A  EQ          .               .               .               .               .          69
+     273  r     70 A  EQ          .               .               .               .               .          70
+     274  r     71    EQ          .               .               .               .         1.124355E+09     71
+     275  r     72 A  EQ          .               .               .               .               .          72
+     276  r     73 A  EQ          .               .               .               .               .          73
+     277  r     74 A  EQ         1.0              .              1.0             1.0              .          74
+     278  r     75 D  BS         1.0              .              1.0             1.0              .          75
+     279  r     76 I  BS        -0.50000        -0.50000          .               .         1.000000E+10     76
+     280  r     77 A  EQ          .               .               .               .               .          77
+     281  r     78 A  EQ          .               .               .               .               .          78
+     282  r     79    EQ          .               .               .               .         1.316511E+09     79
+     283  r     80 A  EQ          .               .               .               .               .          80
+     284  r     81 A  EQ          .               .               .               .               .          81
+     285  r     82 D  BS         1.0              .              1.0             1.0              .          82
+     286  r     83 D  BS         1.0              .              1.0             1.0              .          83
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1 A  EQ         1.0              .              1.0             1.0              .          84
+       2  x      2 A  EQ          .               .               .               .               .          85
+       3  x      3 A  EQ          .               .               .               .               .          86
+       4  x      4 A  EQ          .               .               .               .               .          87
+       5  x      5    EQ          .               .               .               .        -1.000000E+10     88
+       6  x      6 A  EQ          .               .               .               .               .          89
+       7  x      7 A  EQ         0.05000          .              0.05000         0.05000          .          90
+       8  x      8 A  EQ          .               .               .               .               .          91
+       9  x      9 A  EQ          .               .               .               .               .          92
+      10  x     10 A  EQ          .               .               .               .               .          93
+      11  x     11    EQ          .               .               .               .     -100000000.00000     94
+      12  x     12 A  EQ          .               .               .               .               .          95
+      13  x     13 A  EQ          .               .               .               .               .          96
+      14  x     14 D  BS          .               .               .           3000.00000          .          97
+      15  x     15 A  LL          .               .               .           3000.00000          .          98
+      16  x     16 A  LL          .               .               .           3000.00000          .          99
+      17  x     17 A  FR          .               .                None            None           .         100
+      18  x     18 A  FR          .               .                None            None           .         101
+      19  x     19 A  FR          .               .                None            None           .         102
+      20  x     20    BS         1.0              .                None            None           .         103
+      21  x     21 A  FR          .               .                None            None           .         104
+      22  x     22 A  FR          .               .                None            None           .         105
+      23  x     23 A  FR          .               .                None            None           .         106
+      24  x     24    BS          .               .                None            None           .         107
+      25  x     25    BS          .               .                None            None           .         108
+      26  x     26    BS         0.05000          .                None            None           .         109
+      27  x     27 A  EQ          .               .               .               .               .         110
+      28  x     28 A  EQ          .               .               .               .               .         111
+      29  x     29 A  EQ          .               .               .               .               .         112
+      30  x     30    BS          .               .                None            None           .         113
+      31  x     31    BS          .               .                None            None           .         114
+      32  x     32    BS          .               .                None            None           .         115
+      33  x     33    EQ          .               .               .               .        1075268.81720    116
+      34  x     34 A  EQ          .               .               .               .               .         117
+      35  x     35 A  EQ          .               .               .               .               .         118
+      36  x     36 A  FR          .               .                None            None           .         119
+      37  x     37 A  FR          .               .                None            None           .         120
+      38  x     38 A  FR          .               .                None            None           .         121
+      39  x     39    BS         1.0              .                None            None           .         122
+      40  x     40 A  FR          .               .                None            None           .         123
+      41  x     41 A  FR          .               .                None            None           .         124
+      42  x     42 A  FR          .               .                None            None           .         125
+      43  x     43    BS          .               .                None            None           .         126
+      44  x     44    BS          .               .                None            None           .         127
+      45  x     45    BS         0.05000          .                None            None           .         128
+      46  x     46 A  EQ          .               .               .               .               .         129
+      47  x     47 A  EQ          .               .               .               .               .         130
+      48  x     48 A  EQ          .               .               .               .               .         131
+      49  x     49    BS          .               .                None            None           .         132
+      50  x     50    BS          .               .                None            None           .         133
+      51  x     51    BS          .               .                None            None           .         134
+      52  x     52    EQ          .               .               .               .        2231471.84646    135
+      53  x     53 A  EQ          .               .               .               .               .         136
+      54  x     54 A  EQ          .               .               .               .               .         137
+      55  x     55 A  FR          .               .                None            None           .         138
+      56  x     56 A  FR          .               .                None            None           .         139
+      57  x     57 A  FR          .               .                None            None           .         140
+      58  x     58    BS         1.0              .                None            None           .         141
+      59  x     59 A  FR          .               .                None            None           .         142
+      60  x     60 A  FR          .               .                None            None           .         143
+      61  x     61 A  FR          .               .                None            None           .         144
+      62  x     62    BS          .               .                None            None           .         145
+      63  x     63    BS          .               .                None            None           .         146
+      64  x     64    BS         0.05000          .                None            None           .         147
+      65  x     65 A  EQ          .               .               .               .               .         148
+      66  x     66 A  EQ          .               .               .               .               .         149
+      67  x     67 A  EQ          .               .               .               .               .         150
+      68  x     68    BS          .               .                None            None           .         151
+      69  x     69    BS          .               .                None            None           .         152
+      70  x     70    BS          .               .                None            None           .         153
+      71  x     71    EQ          .               .               .               .        3474700.91017    154
+      72  x     72 A  EQ          .               .               .               .               .         155
+      73  x     73 A  EQ          .               .               .               .               .         156
+      74  x     74 A  FR          .               .                None            None           .         157
+      75  x     75 A  FR          .               .                None            None           .         158
+      76  x     76 A  FR          .               .                None            None           .         159
+      77  x     77    BS         1.0              .                None            None           .         160
+      78  x     78 A  FR          .               .                None            None           .         161
+      79  x     79 A  FR          .               .                None            None           .         162
+      80  x     80 A  FR          .               .                None            None           .         163
+      81  x     81    BS          .               .                None            None           .         164
+      82  x     82    BS          .               .                None            None           .         165
+      83  x     83    BS         0.05000          .                None            None           .         166
+      84  x     84 A  EQ          .               .               .               .               .         167
+      85  x     85 A  EQ          .               .               .               .               .         168
+      86  x     86 A  EQ          .               .               .               .               .         169
+      87  x     87    BS          .               .                None            None           .         170
+      88  x     88    BS          .               .                None            None           .         171
+      89  x     89    BS          .               .                None            None           .         172
+      90  x     90    EQ          .               .               .               .        4811506.35502    173
+      91  x     91 A  EQ          .               .               .               .               .         174
+      92  x     92 A  EQ          .               .               .               .               .         175
+      93  x     93 A  FR          .               .                None            None           .         176
+      94  x     94 A  FR          .               .                None            None           .         177
+      95  x     95 A  FR          .               .                None            None           .         178
+      96  x     96    BS         1.0              .                None            None           .         179
+      97  x     97 A  FR          .               .                None            None           .         180
+      98  x     98 A  FR          .               .                None            None           .         181
+      99  x     99 A  FR          .               .                None            None           .         182
+     100  x    100    BS          .               .                None            None           .         183
+     101  x    101    BS          .               .                None            None           .         184
+     102  x    102    BS         0.05000          .                None            None           .         185
+     103  x    103 A  EQ          .               .               .               .               .         186
+     104  x    104 A  EQ          .               .               .               .               .         187
+     105  x    105 A  EQ          .               .               .               .               .         188
+     106  x    106    BS          .               .                None            None           .         189
+     107  x    107    BS          .               .                None            None           .         190
+     108  x    108    BS          .               .                None            None           .         191
+     109  x    109    EQ          .               .               .               .        6248931.56454    192
+     110  x    110 A  EQ          .               .               .               .               .         193
+     111  x    111 A  EQ          .               .               .               .               .         194
+     112  x    112 A  FR          .               .                None            None           .         195
+     113  x    113 A  FR          .               .                None            None           .         196
+     114  x    114 A  FR          .               .                None            None           .         197
+     115  x    115    BS         1.0              .                None            None           .         198
+     116  x    116 A  FR          .               .                None            None           .         199
+     117  x    117 A  FR          .               .                None            None           .         200
+     118  x    118 A  FR          .               .                None            None           .         201
+     119  x    119   SBS          .               .                None            None           .         202
+     120  x    120    BS          .               .                None            None           .         203
+     121  x    121    BS         0.05000          .                None            None           .         204
+     122  x    122 A  EQ          .               .               .               .               .         205
+     123  x    123 A  EQ          .               .               .               .               .         206
+     124  x    124 A  EQ          .               .               .               .               .         207
+     125  x    125    BS          .               .                None            None           .         208
+     126  x    126    BS          .               .                None            None           .         209
+     127  x    127    BS          .               .                None            None           .         210
+     128  x    128    EQ          .               .               .               .        7794550.06939    211
+     129  x    129 A  EQ          .               .               .               .               .         212
+     130  x    130 A  EQ          .               .               .               .               .         213
+     131  x    131 A  FR          .               .                None            None           .         214
+     132  x    132 A  FR          .               .                None            None           .         215
+     133  x    133 A  FR          .               .                None            None           .         216
+     134  x    134    BS         1.0              .                None            None           .         217
+     135  x    135 A  FR          .               .                None            None           .         218
+     136  x    136 A  FR          .               .                None            None           .         219
+     137  x    137 A  FR          .               .                None            None           .         220
+     138  x    138    BS          .               .                None            None           .         221
+     139  x    139    BS          .               .                None            None           .         222
+     140  x    140    BS         0.05000          .                None            None           .         223
+     141  x    141 A  EQ          .               .               .               .               .         224
+     142  x    142 A  EQ          .               .               .               .               .         225
+     143  x    143 A  EQ          .               .               .               .               .         226
+     144  x    144    BS          .               .                None            None           .         227
+     145  x    145    BS          .               .                None            None           .         228
+     146  x    146    BS          .               .                None            None           .         229
+     147  x    147    EQ          .               .               .               .        9456505.45096    230
+     148  x    148 A  EQ          .               .               .               .               .         231
+     149  x    149 A  EQ          .               .               .               .               .         232
+     150  x    150 A  FR          .               .                None            None           .         233
+     151  x    151 A  FR          .               .                None            None           .         234
+     152  x    152 A  FR          .               .                None            None           .         235
+     153  x    153    BS         1.0              .                None            None           .         236
+     154  x    154 A  FR          .               .                None            None           .         237
+     155  x    155 A  FR          .               .                None            None           .         238
+     156  x    156 A  FR          .               .                None            None           .         239
+     157  x    157    BS          .               .                None            None           .         240
+     158  x    158    BS          .               .                None            None           .         241
+     159  x    159    BS         0.05000          .                None            None           .         242
+     160  x    160 A  EQ          .               .               .               .               .         243
+     161  x    161 A  EQ          .               .               .               .               .         244
+     162  x    162 A  EQ          .               .               .               .               .         245
+     163  x    163    BS          .               .                None            None          0.00000    246
+     164  x    164    BS          .               .                None            None           .         247
+     165  x    165    BS          .               .                None            None           .         248
+     166  x    166    EQ          .               .               .               .       11243554.24835    249
+     167  x    167 A  EQ          .               .               .               .               .         250
+     168  x    168 A  EQ          .               .               .               .               .         251
+     169  x    169 A  FR          .               .                None            None           .         252
+     170  x    170 A  FR          .               .                None            None           .         253
+     171  x    171 A  FR          .               .                None            None           .         254
+     172  x    172    BS         1.0              .                None            None           .         255
+     173  x    173 A  FR          .               .                None            None           .         256
+     174  x    174 A  FR          .               .                None            None           .         257
+     175  x    175 A  FR          .               .                None            None           .         258
+     176  x    176    BS          .               .                None            None           .         259
+     177  x    177    BS          .               .                None            None           .         260
+     178  x    178    BS         0.05000          .                None            None           .         261
+     179  x    179 A  EQ          .               .               .               .               .         262
+     180  x    180 A  EQ          .               .               .               .               .         263
+     181  x    181 A  EQ          .               .               .               .               .         264
+     182  x    182    BS          .               .                None            None           .         265
+     183  x    183    BS          .               .                None            None           .         266
+     184  x    184    BS          .               .                None            None           .         267
+     185  x    185    EQ          .               .               .               .       13165112.09500    268
+     186  x    186 A  EQ          .               .               .               .               .         269
+     187  x    187 A  EQ          .               .               .               .               .         270
+     188  x    188 A  FR          .               .                None            None           .         271
+     189  x    189 A  FR          .               .                None            None           .         272
+     190  x    190 A  FR          .               .                None            None           .         273
+     191  x    191 A  EQ         1.0              .              1.0             1.0              .         274
+     192  x    192 A  EQ          .               .               .               .               .         275
+     193  x    193 N  EQ          .               .               .               .               .         276
+     194  x    194 A  EQ          .               .               .               .               .         277
+     195  x    195    EQ         0.50000          .              0.50000         0.50000    1.000000E+10    278
+     196  x    196 A  EQ          .               .               .               .               .         279
+     197  x    197 A  EQ         0.05000          .              0.05000         0.05000          .         280
+     198  x    198 A  EQ          .               .               .               .               .         281
+     199  x    199 A  EQ          .               .               .               .               .         282
+     200  x    200 A  EQ          .               .               .               .               .         283
+     201  x    201    EQ          .               .               .               .        -1.316511E+09    284
+     202  x    202 A  EQ          .               .               .               .               .         285
+     203  x    203 A  EQ          .               .               .               .               .         286
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........     10000
+ Scale option...........         0       Minor optimality  tol..  1.00E-06       Minor print level......         1
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        42
+ QP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        42
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars         0       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......       144       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....       144       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      1000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)...... 9999999.0       Major optimality tol...  2.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Limited-Memory Hessian.                 Hessian updates........        10       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..        41       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars       143
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows             42           0           1          41           0
+ Columns         203           0         123          20          60
+
+ No. of matrix elements                  884     Density      10.368
+ Biggest  constant element        0.0000E+00  (excluding fixed columns,
+ Smallest constant element        0.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints      41     Linear constraints       1
+ Nonlinear variables       143     Linear variables        60
+ Jacobian  variables       143     Objective variables      0
+ Total constraints          42     Total variables        203
+1
+ 
+
+ 
+ The user has defined     824   out of     824   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    1.43E-09  in constraint   217
+ 
+1
+ 
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+     96     0     96              1  2.5E-01  1.0E-03  0.0000000E+00      69           34 2.0E+00         _  r
+     98     1      2 1.8E-02      2  2.5E-01  1.0E-03  9.8180951E+04      69     1     36 1.1E+05 2.3E+05 _  rli
+     99     2      1 1.0E+00      4  1.6E-01  1.0E-03  9.6304083E+04      69           36 1.0E+06 2.3E+05 _  rli
+    102     3      3 6.0E+00      7  4.7E-02  9.1E+03  8.5396333E+04      69           34 2.0E+00 2.3E+05 _  rl
+    102     4      0 3.8E-01      9  9.8E-03  9.1E+03  5.2673082E+04      69           34 2.0E+00 2.3E+05 _  rl
+    102     5      0 1.0E+00     10 (1.2E-17)(0.0E+00)-6.0000000E+01      69           34 2.0E+00         _  r
+1
+ 
+ SNOPTA EXIT   0 -- finished successfully
+ SNOPTA INFO   1 -- optimality conditions satisfied
+
+ Problem name                 drake_pr
+ No. of iterations                 102   Objective           -6.0000000000E+01
+ No. of major iterations             5   Linear    obj. term -6.0000000000E+01
+ Penalty parameter           0.000E+00   Nonlinear obj. term  0.0000000000E+00
+ User function calls (total)        11
+ No. of superbasics                 34   No. of basic nonlinears            38
+ No. of degenerate steps             1   Percentage                       0.98
+ Max x                     129 5.5E+01   Max pi                     42 1.0E+00
+ Max Primal infeas           0 0.0E+00   Max Dual infeas             0 0.0E+00
+ Nonlinear constraint violn    6.7E-16
+1
+ 
+ Name           drake_pr                 Objective Value     -6.0000000000E+01
+
+ Status         Optimal Soln             Iteration    102    Superbasics    34
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+     204  r      1    BS       -60.00000       -60.00000           None            None         -1.0          1
+     205  r      2 D  BS         1.0              .              1.0             1.0              .           2
+     206  r      3 A  EQ          .               .               .               .               .           3
+     207  r      4 A  EQ          .               .               .               .               .           4
+     208  r      5 A  EQ          .               .               .               .               .           5
+     209  r      6 A  EQ         1.0              .              1.0             1.0              .           6
+     210  r      7 A  EQ        -0.00000        -0.00000          .               .               .           7
+     211  r      8 A  EQ        -0.00000        -0.00000          .               .               .           8
+     212  r      9 D  BS          .               .               .               .               .           9
+     213  r     10 A  EQ         1.0              .              1.0             1.0              .          10
+     214  r     11 A  EQ        -0.00000        -0.00000          .               .               .          11
+     215  r     12 A  EQ          .               .               .               .               .          12
+     216  r     13 A  EQ          .               .               .               .               .          13
+     217  r     14 A  EQ         1.0              .              1.0             1.0              .          14
+     218  r     15 A  EQ        -0.00000        -0.00000          .               .               .          15
+     219  r     16 A  EQ        -0.00000        -0.00000          .               .               .          16
+     220  r     17 A  EQ          .               .               .               .               .          17
+     221  r     18 A  EQ         1.0              .              1.0             1.0              .          18
+     222  r     19 A  EQ        -0.00000        -0.00000          .               .               .          19
+     223  r     20 A  EQ          .               .               .               .               .          20
+     224  r     21 A  EQ          .               .               .               .               .          21
+     225  r     22 A  EQ         1.0              .              1.0             1.0              .          22
+     226  r     23 A  EQ        -0.00000        -0.00000          .               .               .          23
+     227  r     24 A  EQ          .               .               .               .               .          24
+     228  r     25 A  EQ          .               .               .               .               .          25
+     229  r     26 A  EQ         1.0              .              1.0             1.0              .          26
+     230  r     27 A  EQ        -0.00000        -0.00000          .               .               .          27
+     231  r     28 A  EQ          .               .               .               .               .          28
+     232  r     29 A  EQ          .               .               .               .               .          29
+     233  r     30 A  EQ         1.0              .              1.0             1.0              .          30
+     234  r     31 A  EQ        -0.00000        -0.00000          .               .               .          31
+     235  r     32 A  EQ          .               .               .               .               .          32
+     236  r     33 A  EQ          .               .               .               .               .          33
+     237  r     34 A  EQ         1.0              .              1.0             1.0              .          34
+     238  r     35 A  EQ          .               .               .               .               .          35
+     239  r     36 A  EQ         0.00000         0.00000          .               .               .          36
+     240  r     37 A  EQ          .               .               .               .               .          37
+     241  r     38 A  EQ         1.0              .              1.0             1.0              .          38
+     242  r     39 A  EQ         0.00000         0.00000          .               .               .          39
+     243  r     40 A  EQ        -0.00000        -0.00000          .               .               .          40
+     244  r     41 A  EQ          .               .               .               .               .          41
+     245  r     42 D  BS         1.0              .              1.0             1.0              .          42
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1 A  EQ         1.0              .              1.0             1.0              .          43
+       2  x      2 A  EQ          .               .               .               .               .          44
+       3  x      3 A  EQ          .               .               .               .               .          45
+       4  x      4 A  EQ          .               .               .               .               .          46
+       5  x      5 A  EQ          .               .               .               .               .          47
+       6  x      6 A  EQ          .               .               .               .               .          48
+       7  x      7 A  EQ         0.05000          .              0.05000         0.05000          .          49
+       8  x      8 A  EQ          .               .               .               .               .          50
+       9  x      9 A  EQ          .               .               .               .               .          51
+      10  x     10 A  EQ          .               .               .               .               .          52
+      11  x     11 A  EQ          .               .               .               .               .          53
+      12  x     12 A  EQ          .               .               .               .               .          54
+      13  x     13 A  EQ          .               .               .               .               .          55
+      14  x     14    LL        -1.0             1.0            -1.0             1.0             1.0         56
+      15  x     15    LL        -1.0             1.0            -1.0             1.0             1.0         57
+      16  x     16    LL        -1.0             1.0            -1.0             1.0             1.0         58
+      17  x     17    LL        -1.0             1.0            -1.0             1.0             1.0         59
+      18  x     18    LL        -1.0             1.0            -1.0             1.0             1.0         60
+      19  x     19    LL        -1.0             1.0            -1.0             1.0             1.0         61
+      20  x     20    BS         1.0              .                None            None           .          62
+      21  x     21 A  FR          .               .                None            None           .          63
+      22  x     22 A  FR          .               .                None            None           .          64
+      23  x     23 A  FR          .               .                None            None           .          65
+      24  x     24    BS          .               .                None            None           .          66
+      25  x     25    BS          .               .                None            None           .          67
+      26  x     26    BS         0.05000          .                None            None           .          68
+      27  x     27   SBS         5.50048          .                None            None           .          69
+      28  x     28   SBS         5.50048          .                None            None           .          70
+      29  x     29 A  FR          .               .                None            None           .          71
+      30  x     30   SBS        55.00476          .                None            None           .          72
+      31  x     31    BS        55.00476          .                None            None           .          73
+      32  x     32 A  FR          .               .                None            None           .          74
+      33  x     33    LL        -1.0             1.0            -1.0             1.0             1.0         75
+      34  x     34    LL        -1.0             1.0            -1.0             1.0             1.0         76
+      35  x     35    LL        -1.0             1.0            -1.0             1.0             1.0         77
+      36  x     36    LL        -1.0             1.0            -1.0             1.0             1.0         78
+      37  x     37    LL        -1.0             1.0            -1.0             1.0             1.0         79
+      38  x     38    LL        -1.0             1.0            -1.0             1.0             1.0         80
+      39  x     39    BS         1.0              .                None            None           .          81
+      40  x     40 A  FR          .               .                None            None           .          82
+      41  x     41 A  FR          .               .                None            None           .          83
+      42  x     42 A  FR          .               .                None            None           .          84
+      43  x     43    BS         0.05555          .                None            None           .          85
+      44  x     44    BS         0.05555          .                None            None           .          86
+      45  x     45    BS         0.05000          .                None            None           .          87
+      46  x     46   SBS         5.50048          .                None            None           .          88
+      47  x     47   SBS         5.50048          .                None            None           .          89
+      48  x     48 A  FR          .               .                None            None           .          90
+      49  x     49   SBS        55.00482          .                None            None           .          91
+      50  x     50   SBS        55.00482          .                None            None           .          92
+      51  x     51 A  FR          .               .                None            None           .          93
+      52  x     52    LL        -1.0             1.0            -1.0             1.0             1.0         94
+      53  x     53    LL        -1.0             1.0            -1.0             1.0             1.0         95
+      54  x     54    LL        -1.0             1.0            -1.0             1.0             1.0         96
+      55  x     55    LL        -1.0             1.0            -1.0             1.0             1.0         97
+      56  x     56    LL        -1.0             1.0            -1.0             1.0             1.0         98
+      57  x     57    LL        -1.0             1.0            -1.0             1.0             1.0         99
+      58  x     58    BS         1.0              .                None            None           .         100
+      59  x     59 A  FR          .               .                None            None           .         101
+      60  x     60 A  FR          .               .                None            None           .         102
+      61  x     61 A  FR          .               .                None            None           .         103
+      62  x     62    BS         0.11111          .                None            None           .         104
+      63  x     63    BS         0.11111          .                None            None           .         105
+      64  x     64    BS         0.05000          .                None            None           .         106
+      65  x     65   SBS         5.50049          .                None            None           .         107
+      66  x     66   SBS         5.50049          .                None            None           .         108
+      67  x     67 A  FR          .               .                None            None           .         109
+      68  x     68   SBS        55.00493          .                None            None           .         110
+      69  x     69   SBS        55.00493          .                None            None           .         111
+      70  x     70 A  FR          .               .                None            None           .         112
+      71  x     71    LL        -1.0             1.0            -1.0             1.0             1.0        113
+      72  x     72    LL        -1.0             1.0            -1.0             1.0             1.0        114
+      73  x     73    LL        -1.0             1.0            -1.0             1.0             1.0        115
+      74  x     74    LL        -1.0             1.0            -1.0             1.0             1.0        116
+      75  x     75    LL        -1.0             1.0            -1.0             1.0             1.0        117
+      76  x     76    LL        -1.0             1.0            -1.0             1.0             1.0        118
+      77  x     77    BS         1.0              .                None            None           .         119
+      78  x     78 A  FR          .               .                None            None           .         120
+      79  x     79 A  FR          .               .                None            None           .         121
+      80  x     80 A  FR          .               .                None            None           .         122
+      81  x     81    BS         0.16666          .                None            None           .         123
+      82  x     82    BS         0.16666          .                None            None           .         124
+      83  x     83    BS         0.05000          .                None            None           .         125
+      84  x     84   SBS         5.50051          .                None            None           .         126
+      85  x     85   SBS         5.50051          .                None            None           .         127
+      86  x     86 A  FR          .               .                None            None           .         128
+      87  x     87   SBS        55.00509          .                None            None           .         129
+      88  x     88   SBS        55.00509          .                None            None           .         130
+      89  x     89 A  FR          .               .                None            None           .         131
+      90  x     90    LL        -1.0             1.0            -1.0             1.0             1.0        132
+      91  x     91    LL        -1.0             1.0            -1.0             1.0             1.0        133
+      92  x     92    LL        -1.0             1.0            -1.0             1.0             1.0        134
+      93  x     93    LL        -1.0             1.0            -1.0             1.0             1.0        135
+      94  x     94    LL        -1.0             1.0            -1.0             1.0             1.0        136
+      95  x     95    LL        -1.0             1.0            -1.0             1.0             1.0        137
+      96  x     96    BS         1.0              .                None            None           .         138
+      97  x     97 A  FR          .               .                None            None           .         139
+      98  x     98 A  FR          .               .                None            None           .         140
+      99  x     99 A  FR          .               .                None            None           .         141
+     100  x    100    BS         0.22222          .                None            None           .         142
+     101  x    101    BS         0.22222          .                None            None           .         143
+     102  x    102    BS         0.05000          .                None            None           .         144
+     103  x    103   SBS         5.50053          .                None            None           .         145
+     104  x    104   SBS         5.50053          .                None            None           .         146
+     105  x    105 A  FR          .               .                None            None           .         147
+     106  x    106   SBS        55.00532          .                None            None           .         148
+     107  x    107   SBS        55.00532          .                None            None           .         149
+     108  x    108 A  FR          .               .                None            None           .         150
+     109  x    109    LL        -1.0             1.0            -1.0             1.0             1.0        151
+     110  x    110    LL        -1.0             1.0            -1.0             1.0             1.0        152
+     111  x    111    LL        -1.0             1.0            -1.0             1.0             1.0        153
+     112  x    112    LL        -1.0             1.0            -1.0             1.0             1.0        154
+     113  x    113    LL        -1.0             1.0            -1.0             1.0             1.0        155
+     114  x    114    LL        -1.0             1.0            -1.0             1.0             1.0        156
+     115  x    115    BS         1.0              .                None            None           .         157
+     116  x    116 A  FR          .               .                None            None           .         158
+     117  x    117 A  FR          .               .                None            None           .         159
+     118  x    118 A  FR          .               .                None            None           .         160
+     119  x    119    BS         0.27778          .                None            None           .         161
+     120  x    120    BS         0.27778          .                None            None           .         162
+     121  x    121    BS         0.05000          .                None            None           .         163
+     122  x    122   SBS         5.50056          .                None            None           .         164
+     123  x    123   SBS         5.50056          .                None            None           .         165
+     124  x    124 A  FR          .               .                None            None           .         166
+     125  x    125   SBS        55.00559          .                None            None           .         167
+     126  x    126   SBS        55.00559          .                None            None           .         168
+     127  x    127 A  FR          .               .                None            None           .         169
+     128  x    128    LL        -1.0             1.0            -1.0             1.0             1.0        170
+     129  x    129    LL        -1.0             1.0            -1.0             1.0             1.0        171
+     130  x    130    LL        -1.0             1.0            -1.0             1.0             1.0        172
+     131  x    131    LL        -1.0             1.0            -1.0             1.0             1.0        173
+     132  x    132    LL        -1.0             1.0            -1.0             1.0             1.0        174
+     133  x    133    LL        -1.0             1.0            -1.0             1.0             1.0        175
+     134  x    134    BS         1.0              .                None            None           .         176
+     135  x    135 A  FR          .               .                None            None           .         177
+     136  x    136 A  FR          .               .                None            None           .         178
+     137  x    137 A  FR          .               .                None            None           .         179
+     138  x    138    BS         0.33333          .                None            None           .         180
+     139  x    139    BS         0.33333          .                None            None           .         181
+     140  x    140    BS         0.05000          .                None            None           .         182
+     141  x    141   SBS         5.50059          .                None            None           .         183
+     142  x    142   SBS         5.50059          .                None            None           .         184
+     143  x    143 A  FR          .               .                None            None           .         185
+     144  x    144    BS        55.00593          .                None            None           .         186
+     145  x    145   SBS        55.00593          .                None            None           .         187
+     146  x    146 A  FR          .               .                None            None           .         188
+     147  x    147    LL        -1.0             1.0            -1.0             1.0             1.0        189
+     148  x    148    LL        -1.0             1.0            -1.0             1.0             1.0        190
+     149  x    149    LL        -1.0             1.0            -1.0             1.0             1.0        191
+     150  x    150    LL        -1.0             1.0            -1.0             1.0             1.0        192
+     151  x    151    LL        -1.0             1.0            -1.0             1.0             1.0        193
+     152  x    152    LL        -1.0             1.0            -1.0             1.0             1.0        194
+     153  x    153    BS         1.0              .                None            None           .         195
+     154  x    154 A  FR          .               .                None            None           .         196
+     155  x    155 A  FR          .               .                None            None           .         197
+     156  x    156 A  FR          .               .                None            None           .         198
+     157  x    157    BS         0.38889          .                None            None           .         199
+     158  x    158    BS         0.38889          .                None            None           .         200
+     159  x    159    BS         0.05000          .                None            None           .         201
+     160  x    160   SBS         5.50063          .                None            None           .         202
+     161  x    161   SBS         5.50063          .                None            None           .         203
+     162  x    162 A  FR          .               .                None            None           .         204
+     163  x    163   SBS        55.00632          .                None            None           .         205
+     164  x    164   SBS        55.00632          .                None            None           .         206
+     165  x    165 A  FR          .               .                None            None           .         207
+     166  x    166    LL        -1.0             1.0            -1.0             1.0             1.0        208
+     167  x    167    LL        -1.0             1.0            -1.0             1.0             1.0        209
+     168  x    168    LL        -1.0             1.0            -1.0             1.0             1.0        210
+     169  x    169    LL        -1.0             1.0            -1.0             1.0             1.0        211
+     170  x    170    LL        -1.0             1.0            -1.0             1.0             1.0        212
+     171  x    171    LL        -1.0             1.0            -1.0             1.0             1.0        213
+     172  x    172    BS         1.0              .                None            None           .         214
+     173  x    173 A  FR          .               .                None            None           .         215
+     174  x    174 A  FR          .               .                None            None           .         216
+     175  x    175 A  FR          .               .                None            None           .         217
+     176  x    176    BS         0.44444          .                None            None           .         218
+     177  x    177    BS         0.44444          .                None            None           .         219
+     178  x    178    BS         0.05000          .                None            None           .         220
+     179  x    179   SBS         5.50068          .                None            None           .         221
+     180  x    180   SBS         5.50068          .                None            None           .         222
+     181  x    181 A  FR          .               .                None            None           .         223
+     182  x    182   SBS        55.00676          .                None            None           .         224
+     183  x    183   SBS        55.00676          .                None            None           .         225
+     184  x    184 A  FR          .               .                None            None           .         226
+     185  x    185    LL        -1.0             1.0            -1.0             1.0             1.0        227
+     186  x    186    LL        -1.0             1.0            -1.0             1.0             1.0        228
+     187  x    187    LL        -1.0             1.0            -1.0             1.0             1.0        229
+     188  x    188    LL        -1.0             1.0            -1.0             1.0             1.0        230
+     189  x    189    LL        -1.0             1.0            -1.0             1.0             1.0        231
+     190  x    190    LL        -1.0             1.0            -1.0             1.0             1.0        232
+     191  x    191 A  EQ         1.0              .              1.0             1.0              .         233
+     192  x    192 A  EQ          .               .               .               .               .         234
+     193  x    193 A  EQ          .               .               .               .               .         235
+     194  x    194 A  EQ          .               .               .               .               .         236
+     195  x    195 A  EQ         0.50000          .              0.50000         0.50000          .         237
+     196  x    196 A  EQ         0.50000          .              0.50000         0.50000          .         238
+     197  x    197 A  EQ         0.05000          .              0.05000         0.05000          .         239
+     198  x    198 A  FR          .               .                None            None           .         240
+     199  x    199 A  FR          .               .                None            None           .         241
+     200  x    200 A  FR          .               .                None            None           .         242
+     201  x    201 A  FR          .               .                None            None           .         243
+     202  x    202 A  FR          .               .                None            None           .         244
+     203  x    203 A  FR          .               .                None            None           .         245
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ 
+ ===>  WARNING - Column     17 of the Jacobian is empty.
+ ===>  WARNING - Column     18 of the Jacobian is empty.
+ ===>  WARNING - Column     19 of the Jacobian is empty.
+ ===>  WARNING - Column     36 of the Jacobian is empty.
+ ===>  WARNING - Column     37 of the Jacobian is empty.
+ ===>  WARNING - Column     38 of the Jacobian is empty.
+ ===>  WARNING - Column     55 of the Jacobian is empty.
+ ===>  WARNING - Column     56 of the Jacobian is empty.
+ ===>  WARNING - Column     57 of the Jacobian is empty.
+ ===>  WARNING - Column     74 of the Jacobian is empty.
+ ===>  WARNING - Column     75 of the Jacobian is empty.
+ ===>  WARNING - Column     76 of the Jacobian is empty.
+ ===>  WARNING - Column     93 of the Jacobian is empty.
+ ===>  WARNING - Column     94 of the Jacobian is empty.
+ ===>  WARNING - Column     95 of the Jacobian is empty.
+ ===>  WARNING - Column    112 of the Jacobian is empty.
+ ===>  WARNING - Column    113 of the Jacobian is empty.
+ ===>  WARNING - Column    114 of the Jacobian is empty.
+ ===>  WARNING - Column    131 of the Jacobian is empty.
+ ===>  WARNING - Column    132 of the Jacobian is empty.
+ ===>  WARNING - Column    133 of the Jacobian is empty.
+ ===>  WARNING - Column    150 of the Jacobian is empty.
+ ===>  WARNING - Column    151 of the Jacobian is empty.
+ ===>  WARNING - Column    152 of the Jacobian is empty.
+ ===>  WARNING - Column    169 of the Jacobian is empty.
+ ===>  WARNING - Column    170 of the Jacobian is empty.
+ ===>  WARNING - Column    171 of the Jacobian is empty.
+ ===>  WARNING - Column    188 of the Jacobian is empty.
+ ===>  WARNING - Column    189 of the Jacobian is empty.
+ ===>  WARNING - Column    190 of the Jacobian is empty.
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........     10000
+ Scale option...........         0       Minor optimality  tol..  1.00E-06       Minor print level......         1
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+ QP Partial price.......         1       Prtl price section ( A)       203       Prtl price section (-I)        83
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars         0       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......       174       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....       174       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      1000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)...... 9999999.0       Major optimality tol...  2.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Limited-Memory Hessian.                 Hessian updates........        10       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..        82       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars       173
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows             83           0           1          82           0
+ Columns         203           0         120          80           3
+
+ No. of matrix elements                 1828     Density      10.849
+ Biggest  constant element        0.0000E+00  (excluding fixed columns,
+ Smallest constant element        0.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints      82     Linear constraints       1
+ Nonlinear variables       173     Linear variables        30
+ Jacobian  variables       173     Objective variables      0
+ Total constraints          83     Total variables        203
+1
+ 
+
+ 
+ The user has defined    1828   out of    1828   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    1.01E-09  in constraint   253
+ 
+1
+ 
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+      2     0      2              1  2.5E-01 (1.2E-17) 5.0000000E+09     172            1 8.0E+00         _  r i
+1
+ 
+ SNOPTA EXIT  10 -- the problem appears to be infeasible
+ SNOPTA INFO  13 -- nonlinear infeasibilities minimized
+
+ Problem name                 drake_pr
+ No. of iterations                   2   Objective            0.0000000000E+00
+ No. of major iterations             0   Linear    obj. term  0.0000000000E+00
+ Penalty parameter           0.000E+00   Nonlinear obj. term  0.0000000000E+00
+ Elastic weight                1.0E+10   Elastic   objective  5.0000000000E+09
+                                         Elastic infeas       5.0000000000E-01
+ User function calls (total)         2
+ No. of superbasics                  1   No. of basic nonlinears            63
+ No. of degenerate steps             1   Percentage                      50.00
+ Max x                       1 1.0E+00   Max pi                      3 1.0E+10
+ Max Primal infeas         279 5.0E-01   Max Dual infeas           163 1.2E-07
+ Nonlinear constraint violn    5.0E-01
+1
+ 
+ Name           drake_pr                 Objective Value      0.0000000000E+00
+
+ Status         Optimal Soln             Iteration      2    Superbasics     1
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+     204  r      1    BS          .               .                None            None         -1.0          1
+     205  r      2 D  BS         1.0              .              1.0             1.0              .           2
+     206  r      3 D  BS         1.0              .              1.0             1.0              .           3
+     207  r      4    EQ          .               .               .               .         1.000000E+10      4
+     208  r      5 A  EQ          .               .               .               .               .           5
+     209  r      6 A  EQ          .               .               .               .               .           6
+     210  r      7 A  EQ          .               .               .               .               .           7
+     211  r      8 A  EQ          .               .               .               .               .           8
+     212  r      9 A  EQ          .               .               .               .               .           9
+     213  r     10 A  EQ         1.0              .              1.0             1.0              .          10
+     214  r     11 D  BS         1.0              .              1.0             1.0              .          11
+     215  r     12 D  BS          .               .               .               .         1.000000E+10     12
+     216  r     13 D  BS          .               .               .               .               .          13
+     217  r     14 D  BS          .               .               .               .               .          14
+     218  r     15    EQ          .               .               .               .      107526881.72043     15
+     219  r     16 D  BS          .               .               .               .               .          16
+     220  r     17 D  BS          .               .               .               .               .          17
+     221  r     18 A  EQ         1.0              .              1.0             1.0              .          18
+     222  r     19 D  BS         1.0              .              1.0             1.0              .          19
+     223  r     20    EQ          .               .               .               .         1.000000E+10     20
+     224  r     21 A  EQ          .               .               .               .               .          21
+     225  r     22 A  EQ          .               .               .               .               .          22
+     226  r     23    EQ          .               .               .               .      223147184.64562     23
+     227  r     24 A  EQ          .               .               .               .               .          24
+     228  r     25 A  EQ          .               .               .               .               .          25
+     229  r     26 A  EQ         1.0              .              1.0             1.0              .          26
+     230  r     27 D  BS         1.0              .              1.0             1.0              .          27
+     231  r     28    EQ          .               .               .               .         1.000000E+10     28
+     232  r     29 A  EQ          .               .               .               .               .          29
+     233  r     30 A  EQ          .               .               .               .               .          30
+     234  r     31    EQ          .               .               .               .      347470091.01680     31
+     235  r     32 A  EQ          .               .               .               .               .          32
+     236  r     33 A  EQ          .               .               .               .               .          33
+     237  r     34 A  EQ         1.0              .              1.0             1.0              .          34
+     238  r     35 D  BS         1.0              .              1.0             1.0              .          35
+     239  r     36    EQ          .               .               .               .         1.000000E+10     36
+     240  r     37 A  EQ          .               .               .               .               .          37
+     241  r     38 A  EQ          .               .               .               .               .          38
+     242  r     39    EQ          .               .               .               .      481150635.50194     39
+     243  r     40 A  EQ          .               .               .               .               .          40
+     244  r     41 A  EQ          .               .               .               .               .          41
+     245  r     42 A  EQ         1.0              .              1.0             1.0              .          42
+     246  r     43 D  BS         1.0              .              1.0             1.0              .          43
+     247  r     44    EQ          .               .               .               .         1.000000E+10     44
+     248  r     45 A  EQ          .               .               .               .               .          45
+     249  r     46 A  EQ          .               .               .               .               .          46
+     250  r     47    EQ          .               .               .               .      624893156.45369     47
+     251  r     48 A  EQ          .               .               .               .               .          48
+     252  r     49 A  EQ          .               .               .               .               .          49
+     253  r     50 A  EQ         1.0              .              1.0             1.0              .          50
+     254  r     51 D  BS         1.0              .              1.0             1.0              .          51
+     255  r     52    EQ          .               .               .               .         1.000000E+10     52
+     256  r     53 A  EQ          .               .               .               .               .          53
+     257  r     54 A  EQ          .               .               .               .               .          54
+     258  r     55    EQ          .               .               .               .      779455006.93946     55
+     259  r     56 A  EQ          .               .               .               .               .          56
+     260  r     57 A  EQ          .               .               .               .               .          57
+     261  r     58 A  EQ         1.0              .              1.0             1.0              .          58
+     262  r     59 D  BS         1.0              .              1.0             1.0              .          59
+     263  r     60    EQ          .               .               .               .         1.000000E+10     60
+     264  r     61 A  EQ          .               .               .               .               .          61
+     265  r     62 A  EQ          .               .               .               .               .          62
+     266  r     63    EQ          .               .               .               .      945650545.09619     63
+     267  r     64 A  EQ          .               .               .               .               .          64
+     268  r     65 A  EQ          .               .               .               .               .          65
+     269  r     66 A  EQ         1.0              .              1.0             1.0              .          66
+     270  r     67 D  BS         1.0              .              1.0             1.0              .          67
+     271  r     68    EQ          .               .               .               .         1.000000E+10     68
+     272  r     69 A  EQ          .               .               .               .               .          69
+     273  r     70 A  EQ          .               .               .               .               .          70
+     274  r     71    EQ          .               .               .               .         1.124355E+09     71
+     275  r     72 A  EQ          .               .               .               .               .          72
+     276  r     73 A  EQ          .               .               .               .               .          73
+     277  r     74 A  EQ         1.0              .              1.0             1.0              .          74
+     278  r     75 D  BS         1.0              .              1.0             1.0              .          75
+     279  r     76 I  BS        -0.50000        -0.50000          .               .         1.000000E+10     76
+     280  r     77 A  EQ          .               .               .               .               .          77
+     281  r     78 A  EQ          .               .               .               .               .          78
+     282  r     79    EQ          .               .               .               .         1.316511E+09     79
+     283  r     80 A  EQ          .               .               .               .               .          80
+     284  r     81 A  EQ          .               .               .               .               .          81
+     285  r     82 D  BS         1.0              .              1.0             1.0              .          82
+     286  r     83 D  BS         1.0              .              1.0             1.0              .          83
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1 A  EQ         1.0              .              1.0             1.0              .          84
+       2  x      2 A  EQ          .               .               .               .               .          85
+       3  x      3 A  EQ          .               .               .               .               .          86
+       4  x      4 A  EQ          .               .               .               .               .          87
+       5  x      5    EQ          .               .               .               .        -1.000000E+10     88
+       6  x      6 A  EQ          .               .               .               .               .          89
+       7  x      7 A  EQ         0.05000          .              0.05000         0.05000          .          90
+       8  x      8 A  EQ          .               .               .               .               .          91
+       9  x      9 A  EQ          .               .               .               .               .          92
+      10  x     10 A  EQ          .               .               .               .               .          93
+      11  x     11    EQ          .               .               .               .     -100000000.00000     94
+      12  x     12 A  EQ          .               .               .               .               .          95
+      13  x     13 A  EQ          .               .               .               .               .          96
+      14  x     14 D  BS          .               .               .           3000.00000          .          97
+      15  x     15 A  LL          .               .               .           3000.00000          .          98
+      16  x     16 A  LL          .               .               .           3000.00000          .          99
+      17  x     17 A  FR          .               .                None            None           .         100
+      18  x     18 A  FR          .               .                None            None           .         101
+      19  x     19 A  FR          .               .                None            None           .         102
+      20  x     20    BS         1.0              .                None            None           .         103
+      21  x     21 A  FR          .               .                None            None           .         104
+      22  x     22 A  FR          .               .                None            None           .         105
+      23  x     23 A  FR          .               .                None            None           .         106
+      24  x     24    BS          .               .                None            None           .         107
+      25  x     25    BS          .               .                None            None           .         108
+      26  x     26    BS         0.05000          .                None            None           .         109
+      27  x     27 A  EQ          .               .               .               .               .         110
+      28  x     28 A  EQ          .               .               .               .               .         111
+      29  x     29 A  EQ          .               .               .               .               .         112
+      30  x     30    BS          .               .                None            None           .         113
+      31  x     31    BS          .               .                None            None           .         114
+      32  x     32    BS          .               .                None            None           .         115
+      33  x     33    EQ          .               .               .               .        1075268.81720    116
+      34  x     34 A  EQ          .               .               .               .               .         117
+      35  x     35 A  EQ          .               .               .               .               .         118
+      36  x     36 A  FR          .               .                None            None           .         119
+      37  x     37 A  FR          .               .                None            None           .         120
+      38  x     38 A  FR          .               .                None            None           .         121
+      39  x     39    BS         1.0              .                None            None           .         122
+      40  x     40 A  FR          .               .                None            None           .         123
+      41  x     41 A  FR          .               .                None            None           .         124
+      42  x     42 A  FR          .               .                None            None           .         125
+      43  x     43    BS          .               .                None            None           .         126
+      44  x     44    BS          .               .                None            None           .         127
+      45  x     45    BS         0.05000          .                None            None           .         128
+      46  x     46 A  EQ          .               .               .               .               .         129
+      47  x     47 A  EQ          .               .               .               .               .         130
+      48  x     48 A  EQ          .               .               .               .               .         131
+      49  x     49    BS          .               .                None            None           .         132
+      50  x     50    BS          .               .                None            None           .         133
+      51  x     51    BS          .               .                None            None           .         134
+      52  x     52    EQ          .               .               .               .        2231471.84646    135
+      53  x     53 A  EQ          .               .               .               .               .         136
+      54  x     54 A  EQ          .               .               .               .               .         137
+      55  x     55 A  FR          .               .                None            None           .         138
+      56  x     56 A  FR          .               .                None            None           .         139
+      57  x     57 A  FR          .               .                None            None           .         140
+      58  x     58    BS         1.0              .                None            None           .         141
+      59  x     59 A  FR          .               .                None            None           .         142
+      60  x     60 A  FR          .               .                None            None           .         143
+      61  x     61 A  FR          .               .                None            None           .         144
+      62  x     62    BS          .               .                None            None           .         145
+      63  x     63    BS          .               .                None            None           .         146
+      64  x     64    BS         0.05000          .                None            None           .         147
+      65  x     65 A  EQ          .               .               .               .               .         148
+      66  x     66 A  EQ          .               .               .               .               .         149
+      67  x     67 A  EQ          .               .               .               .               .         150
+      68  x     68    BS          .               .                None            None           .         151
+      69  x     69    BS          .               .                None            None           .         152
+      70  x     70    BS          .               .                None            None           .         153
+      71  x     71    EQ          .               .               .               .        3474700.91017    154
+      72  x     72 A  EQ          .               .               .               .               .         155
+      73  x     73 A  EQ          .               .               .               .               .         156
+      74  x     74 A  FR          .               .                None            None           .         157
+      75  x     75 A  FR          .               .                None            None           .         158
+      76  x     76 A  FR          .               .                None            None           .         159
+      77  x     77    BS         1.0              .                None            None           .         160
+      78  x     78 A  FR          .               .                None            None           .         161
+      79  x     79 A  FR          .               .                None            None           .         162
+      80  x     80 A  FR          .               .                None            None           .         163
+      81  x     81    BS          .               .                None            None           .         164
+      82  x     82    BS          .               .                None            None           .         165
+      83  x     83    BS         0.05000          .                None            None           .         166
+      84  x     84 A  EQ          .               .               .               .               .         167
+      85  x     85 A  EQ          .               .               .               .               .         168
+      86  x     86 A  EQ          .               .               .               .               .         169
+      87  x     87    BS          .               .                None            None           .         170
+      88  x     88    BS          .               .                None            None           .         171
+      89  x     89    BS          .               .                None            None           .         172
+      90  x     90    EQ          .               .               .               .        4811506.35502    173
+      91  x     91 A  EQ          .               .               .               .               .         174
+      92  x     92 A  EQ          .               .               .               .               .         175
+      93  x     93 A  FR          .               .                None            None           .         176
+      94  x     94 A  FR          .               .                None            None           .         177
+      95  x     95 A  FR          .               .                None            None           .         178
+      96  x     96    BS         1.0              .                None            None           .         179
+      97  x     97 A  FR          .               .                None            None           .         180
+      98  x     98 A  FR          .               .                None            None           .         181
+      99  x     99 A  FR          .               .                None            None           .         182
+     100  x    100    BS          .               .                None            None           .         183
+     101  x    101    BS          .               .                None            None           .         184
+     102  x    102    BS         0.05000          .                None            None           .         185
+     103  x    103 A  EQ          .               .               .               .               .         186
+     104  x    104 A  EQ          .               .               .               .               .         187
+     105  x    105 A  EQ          .               .               .               .               .         188
+     106  x    106    BS          .               .                None            None           .         189
+     107  x    107    BS          .               .                None            None           .         190
+     108  x    108    BS          .               .                None            None           .         191
+     109  x    109    EQ          .               .               .               .        6248931.56454    192
+     110  x    110 A  EQ          .               .               .               .               .         193
+     111  x    111 A  EQ          .               .               .               .               .         194
+     112  x    112 A  FR          .               .                None            None           .         195
+     113  x    113 A  FR          .               .                None            None           .         196
+     114  x    114 A  FR          .               .                None            None           .         197
+     115  x    115    BS         1.0              .                None            None           .         198
+     116  x    116 A  FR          .               .                None            None           .         199
+     117  x    117 A  FR          .               .                None            None           .         200
+     118  x    118 A  FR          .               .                None            None           .         201
+     119  x    119   SBS          .               .                None            None           .         202
+     120  x    120    BS          .               .                None            None           .         203
+     121  x    121    BS         0.05000          .                None            None           .         204
+     122  x    122 A  EQ          .               .               .               .               .         205
+     123  x    123 A  EQ          .               .               .               .               .         206
+     124  x    124 A  EQ          .               .               .               .               .         207
+     125  x    125    BS          .               .                None            None           .         208
+     126  x    126    BS          .               .                None            None           .         209
+     127  x    127    BS          .               .                None            None           .         210
+     128  x    128    EQ          .               .               .               .        7794550.06939    211
+     129  x    129 A  EQ          .               .               .               .               .         212
+     130  x    130 A  EQ          .               .               .               .               .         213
+     131  x    131 A  FR          .               .                None            None           .         214
+     132  x    132 A  FR          .               .                None            None           .         215
+     133  x    133 A  FR          .               .                None            None           .         216
+     134  x    134    BS         1.0              .                None            None           .         217
+     135  x    135 A  FR          .               .                None            None           .         218
+     136  x    136 A  FR          .               .                None            None           .         219
+     137  x    137 A  FR          .               .                None            None           .         220
+     138  x    138    BS          .               .                None            None           .         221
+     139  x    139    BS          .               .                None            None           .         222
+     140  x    140    BS         0.05000          .                None            None           .         223
+     141  x    141 A  EQ          .               .               .               .               .         224
+     142  x    142 A  EQ          .               .               .               .               .         225
+     143  x    143 A  EQ          .               .               .               .               .         226
+     144  x    144    BS          .               .                None            None           .         227
+     145  x    145    BS          .               .                None            None           .         228
+     146  x    146    BS          .               .                None            None           .         229
+     147  x    147    EQ          .               .               .               .        9456505.45096    230
+     148  x    148 A  EQ          .               .               .               .               .         231
+     149  x    149 A  EQ          .               .               .               .               .         232
+     150  x    150 A  FR          .               .                None            None           .         233
+     151  x    151 A  FR          .               .                None            None           .         234
+     152  x    152 A  FR          .               .                None            None           .         235
+     153  x    153    BS         1.0              .                None            None           .         236
+     154  x    154 A  FR          .               .                None            None           .         237
+     155  x    155 A  FR          .               .                None            None           .         238
+     156  x    156 A  FR          .               .                None            None           .         239
+     157  x    157    BS          .               .                None            None           .         240
+     158  x    158    BS          .               .                None            None           .         241
+     159  x    159    BS         0.05000          .                None            None           .         242
+     160  x    160 A  EQ          .               .               .               .               .         243
+     161  x    161 A  EQ          .               .               .               .               .         244
+     162  x    162 A  EQ          .               .               .               .               .         245
+     163  x    163    BS          .               .                None            None          0.00000    246
+     164  x    164    BS          .               .                None            None           .         247
+     165  x    165    BS          .               .                None            None           .         248
+     166  x    166    EQ          .               .               .               .       11243554.24835    249
+     167  x    167 A  EQ          .               .               .               .               .         250
+     168  x    168 A  EQ          .               .               .               .               .         251
+     169  x    169 A  FR          .               .                None            None           .         252
+     170  x    170 A  FR          .               .                None            None           .         253
+     171  x    171 A  FR          .               .                None            None           .         254
+     172  x    172    BS         1.0              .                None            None           .         255
+     173  x    173 A  FR          .               .                None            None           .         256
+     174  x    174 A  FR          .               .                None            None           .         257
+     175  x    175 A  FR          .               .                None            None           .         258
+     176  x    176    BS          .               .                None            None           .         259
+     177  x    177    BS          .               .                None            None           .         260
+     178  x    178    BS         0.05000          .                None            None           .         261
+     179  x    179 A  EQ          .               .               .               .               .         262
+     180  x    180 A  EQ          .               .               .               .               .         263
+     181  x    181 A  EQ          .               .               .               .               .         264
+     182  x    182    BS          .               .                None            None           .         265
+     183  x    183    BS          .               .                None            None           .         266
+     184  x    184    BS          .               .                None            None           .         267
+     185  x    185    EQ          .               .               .               .       13165112.09500    268
+     186  x    186 A  EQ          .               .               .               .               .         269
+     187  x    187 A  EQ          .               .               .               .               .         270
+     188  x    188 A  FR          .               .                None            None           .         271
+     189  x    189 A  FR          .               .                None            None           .         272
+     190  x    190 A  FR          .               .                None            None           .         273
+     191  x    191 A  EQ         1.0              .              1.0             1.0              .         274
+     192  x    192 A  EQ          .               .               .               .               .         275
+     193  x    193 N  EQ          .               .               .               .               .         276
+     194  x    194 A  EQ          .               .               .               .               .         277
+     195  x    195    EQ         0.50000          .              0.50000         0.50000    1.000000E+10    278
+     196  x    196 A  EQ          .               .               .               .               .         279
+     197  x    197 A  EQ         0.05000          .              0.05000         0.05000          .         280
+     198  x    198 A  EQ          .               .               .               .               .         281
+     199  x    199 A  EQ          .               .               .               .               .         282
+     200  x    200 A  EQ          .               .               .               .               .         283
+     201  x    201    EQ          .               .               .               .        -1.316511E+09    284
+     202  x    202 A  EQ          .               .               .               .               .         285
+     203  x    203 A  EQ          .               .               .               .               .         286
